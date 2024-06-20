@@ -26,4 +26,9 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
     Page<ArticuloInsumo> findBySucursal_Id(Long sucursalId, Pageable pageable);
     List<ArticuloInsumo> findBySucursal_IdAndBajaFalse(Long sucursalId);
 
+
+    @Query("SELECT ai " +
+            "FROM ArticuloInsumo ai " +
+            "WHERE :denominacion IS NOT NULL AND LOWER(ai.denominacion) LIKE LOWER(CONCAT('%', :denominacion, '%'))")
+    List<ArticuloInsumo> searchByDenominacion(@Param("denominacion") String denominacion);
 }
