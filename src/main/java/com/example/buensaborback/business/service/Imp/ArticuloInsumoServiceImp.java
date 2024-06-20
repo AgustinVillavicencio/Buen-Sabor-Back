@@ -188,16 +188,13 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo,Long
         return articuloInsumoRepository.findBySucursal_Id(sucursalId, pageable);
     }
 
-    /*@Override
+    @Override
     public Page<ArticuloInsumo> getArticulosByNombre(Pageable pageable, Long idSucursal, String nombre) {
         return articuloInsumoRepository.findBySucursal_IdAndDenominacionContainingIgnoreCase(idSucursal, nombre, pageable);
-    }*/
+    }
 
     @Override
     public List<ArticuloInsumo> findBySucursal(Long sucursalId ) {
         return articuloInsumoRepository.findBySucursal_IdAndBajaFalse(sucursalId);
     }
-
-    public Page<ArticuloInsumo> getArticulosByNombre(Long idSucursal, String nombre) {
-        return articuloInsumoRepository.findBySucursal_IdAndDenominacionContainingIgnoreCase(idSucursal, nombre);
 }
