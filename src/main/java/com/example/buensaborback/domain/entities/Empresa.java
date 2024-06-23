@@ -21,11 +21,7 @@ public class Empresa extends Base{
     private String nombre;
     private String razonSocial;
     @Column(unique = true)
-    private Long cuil;
-
-    @OneToOne
-    @NotAudited
-    private ImagenEmpresa imagenEmpresa;
+    private String cuil;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "empresa")
     @Builder.Default
