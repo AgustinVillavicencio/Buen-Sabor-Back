@@ -36,7 +36,7 @@ public class SucursalServiceImpl extends BaseServiceImp<Sucursal,Long> implement
     @Transactional
     public Sucursal guardarSucursal(Sucursal sucursal) {
         var domicilio = sucursal.getDomicilio();
-        if(domicilio.getId() != 0){
+        if(domicilio.getId() != null){
             var domicilioBd = domicilioRepository.findById(domicilio.getId());
             domicilioBd.ifPresent(sucursal::setDomicilio);
         }else{
