@@ -1,10 +1,10 @@
 package com.example.buensaborback.business.service.Imp;
 
 import com.example.buensaborback.business.service.Base.BaseServiceImp;
-import com.example.buensaborback.business.service.EmailService;
+//import com.example.buensaborback.business.service.EmailService;
 import com.example.buensaborback.business.service.FacturaService;
 import com.example.buensaborback.business.service.PedidoService;
-import com.example.buensaborback.config.email.EmailDto;
+//import com.example.buensaborback.config.email.EmailDto;
 import com.example.buensaborback.domain.entities.*;
 import com.example.buensaborback.domain.enums.Estado;
 import com.example.buensaborback.domain.enums.TipoEnvio;
@@ -47,8 +47,8 @@ public class PedidoServiceImp extends BaseServiceImp<Pedido,Long> implements Ped
     @Autowired
     FacturaService facturaService;
 
-    @Autowired
-    EmailService emailService;
+//    @Autowired
+//    EmailService emailService;
 
     @Override
     @Transactional
@@ -226,39 +226,39 @@ public class PedidoServiceImp extends BaseServiceImp<Pedido,Long> implements Ped
         Pedido pedido = pedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("El pedido con id " + id + " no se ha encontrado"));
 
-        // Si el pedido está en proceso no se puede cancelar
-        if (request.getEstado() == Estado.CANCELADO && pedido.getEstado() != Estado.PENDIENTE) {
-            throw new RuntimeException("El pedido no se puede cancelar porque está en proceso");
-        }
-
-        // Si el pedido se cancela, restaurar stock
-        if (request.getEstado() == Estado.CANCELADO){
-            for(DetallePedido detalle: pedido.getDetallePedidos()){
-                Articulo articulo = articuloRepository.findById(detalle.getArticulo().getId()).orElseThrow(() -> new RuntimeException("El artículo con id " + detalle.getArticulo().getId() + " no se ha encontrado."));
-                devolverStock(articulo, detalle.getCantidad());
-            }
-        }
-
-        // Si el pedido es aprobado, envíar factura
-        if (request.getEstado() == Estado.PREPARACION) {
-            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-                // Crear un nuevo documento
-                facturaService.crearFacturaPdf(id, outputStream);
-
-                // Configurar detalles del correo
-                EmailDto emailDto = new EmailDto();
-                emailDto.setDestinatario(pedido.getCliente().getUsuario().getEmail());
-                emailDto.setAsunto("Factura de su pedido #" + id);
-                emailDto.setMensaje("¡Gracias por tu compra " + pedido.getCliente().getNombre() + " 🍕🍟🍔🥐! " +
-                        "A continuación encontrarás la factura.");
-
-                // Enviar el correo con la factura adjunta
-                emailService.enviarEmail(emailDto, outputStream);
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException("Error al generar o enviar la factura", e);
-            }
-        }
+//        // Si el pedido está en proceso no se puede cancelar
+//        if (request.getEstado() == Estado.CANCELADO && pedido.getEstado() != Estado.PENDIENTE) {
+//            throw new RuntimeException("El pedido no se puede cancelar porque está en proceso");
+//        }
+//
+//        // Si el pedido se cancela, restaurar stock
+//        if (request.getEstado() == Estado.CANCELADO){
+//            for(DetallePedido detalle: pedido.getDetallePedidos()){
+//                Articulo articulo = articuloRepository.findById(detalle.getArticulo().getId()).orElseThrow(() -> new RuntimeException("El artículo con id " + detalle.getArticulo().getId() + " no se ha encontrado."));
+//                devolverStock(articulo, detalle.getCantidad());
+//            }
+//        }
+//
+//        // Si el pedido es aprobado, envíar factura
+//        if (request.getEstado() == Estado.PREPARACION) {
+//            try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+//                // Crear un nuevo documento
+//                facturaService.crearFacturaPdf(id, outputStream);
+//
+//                // Configurar detalles del correo
+//                EmailDto emailDto = new EmailDto();
+//                emailDto.setDestinatario(pedido.getCliente().getUsuario().getEmail());
+//                emailDto.setAsunto("Factura de su pedido #" + id);
+//                emailDto.setMensaje("¡Gracias por tu compra " + pedido.getCliente().getNombre() + " 🍕🍟🍔🥐! " +
+//                        "A continuación encontrarás la factura.");
+//
+//                // Enviar el correo con la factura adjunta
+//                emailService.enviarEmail(emailDto, outputStream);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                throw new RuntimeException("Error al generar o enviar la factura", e);
+//            }
+//        }
 
         pedido.setEstado(request.getEstado());
         return pedidoRepository.save(pedido);
