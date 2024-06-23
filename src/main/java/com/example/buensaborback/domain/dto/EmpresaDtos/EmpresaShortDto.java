@@ -12,5 +12,4 @@ import lombok.Setter;
 @AllArgsConstructor
 public class EmpresaShortDto extends BaseDto {
     private String nombre;
-    private ImagenEmpresaDto imagenEmpresa;
 }
