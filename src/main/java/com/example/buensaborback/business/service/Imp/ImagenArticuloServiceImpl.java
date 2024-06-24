@@ -46,12 +46,6 @@ public class ImagenArticuloServiceImpl implements ImagenArticuloService {
             List<ImagenArticuloDto> dtos = entities.stream()
                     .map(imagenArticuloMapper::toDTO)
                     .collect(Collectors.toList());
-            //ELIMINAR COMENTANDO?
-            /*
-            for (ImagenArticulo image : images) {
-                imageDtos.add(imagenArticuloMapper.toDto(image));
-            }
-*/
             return new ResponseEntity<>(dtos, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,12 +54,10 @@ public class ImagenArticuloServiceImpl implements ImagenArticuloService {
     }
 
     @Override
-    public ResponseEntity<String> uploadImages(MultipartFile[] files, List<Long> idArticulos) {
+    public ResponseEntity<String> uploadImages(MultipartFile file) {
         List<String> urls = new ArrayList<>();
         try {
             Set<ImagenArticulo> imagenes = new HashSet<>();
-
-            for (MultipartFile file : files) {
                 if (file.isEmpty()) {
                     return ResponseEntity.badRequest().body("El archivo está vacío.");
                 }
@@ -81,17 +73,6 @@ public class ImagenArticuloServiceImpl implements ImagenArticuloService {
                 ImagenArticulo imagenGuardada= imagenArticuloRepository.save(image);
                 imagenes.add(imagenGuardada);
                 urls.add(image.getUrl());
-            }
-
-            Set<Articulo> articulos = new HashSet<>();
-            for (Long idArticulo: idArticulos){
-                Articulo articulo = articuloRepository.getById(idArticulo);
-                if (articulo == null) {
-                    throw new RuntimeException("El articulo con id " + idArticulo + " no se ha encontrado");
-                }
-                articulo.getImagenes().addAll(imagenes);
-                articuloRepository.save(articulo);
-            }
 
             return new ResponseEntity<>("Subido exitosamente: " + String.join(", ", urls), HttpStatus.OK);
         } catch (Exception e) {

@@ -58,7 +58,6 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo,Long
     public ArticuloInsumo update(ArticuloInsumo request, Long id) {
         ArticuloInsumo insumoExistente = articuloInsumoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Insumo no encontrado: { id: " + id + " }"));
-
         Categoria categoria = fetchAndValidateCategoria(request);
         updateImagenes(request, insumoExistente);
         request.setCategoria(categoria);

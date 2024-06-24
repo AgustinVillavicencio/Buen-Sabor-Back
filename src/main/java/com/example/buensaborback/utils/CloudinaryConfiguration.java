@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CloudinaryConfiguration {
 
-    @Value("${cloudinary.cloud_name}") // Inyección de valor desde el archivo de propiedades/application.yml
+    @Value("${cloudinary.cloud_name}")
     private String cloudName;
 
     @Value("${cloudinary.api_key}")
@@ -20,7 +20,6 @@ public class CloudinaryConfiguration {
 
     @Bean
     public Cloudinary cloudinary() {
-        // Configuración y creación del objeto Cloudinary con los valores inyectados
         return new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", cloudName,
                 "api_key", apiKey,

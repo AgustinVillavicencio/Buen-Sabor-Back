@@ -22,8 +22,8 @@ public class ImagenArticuloController {
     }
 
     @PostMapping("/uploads")
-    public String uploadImages(@RequestParam("uploads") MultipartFile[] files, @RequestParam("idArticulos") List<Long> idArticulos) {
-        return imagenArticuloFacade.uploadImages(files, idArticulos);
+    public String uploadImages(@RequestParam("upload") MultipartFile file) {
+        return imagenArticuloFacade.uploadImages(file);
     }
 
     @PostMapping("/deleteImg")
