@@ -22,7 +22,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     @Resource
     private Cloudinary cloudinary; // Inyección de dependencia de Cloudinary
 
-    // Método para subir un archivo a Cloudinary
     @Override
     public String uploadFile(MultipartFile file) {
         try {
@@ -32,7 +31,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
             String publicId = (String) uploadedFile.get("public_id");
             // Generar la URL segura de la imagen subida
             return cloudinary.url().secure(true).generate(publicId);
-
         } catch (IOException e) {
             e.printStackTrace();
             return null;

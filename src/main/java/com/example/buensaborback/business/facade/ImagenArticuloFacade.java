@@ -8,5 +8,5 @@ import java.util.List;
 public interface ImagenArticuloFacade {
     List<ImagenArticuloDto> getAllImages();
     String deleteImage(String publicId, Long id);
-    String uploadImages(MultipartFile[] files, List<Long> idArticulos);
+    String uploadImages(MultipartFile file);
 }
