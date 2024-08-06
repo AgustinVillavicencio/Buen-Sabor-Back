@@ -1,4 +1,4 @@
-package com.example.buensaborback.business.facade.impl;
+package com.example.buensaborback.business.facade.Imp;
 
 import com.example.buensaborback.business.facade.ImagenArticuloFacade;
 import com.example.buensaborback.business.service.ImagenArticuloService;
@@ -21,8 +21,8 @@ public class ImagenArticuloFacadeImp implements ImagenArticuloFacade {
     }
 
 
-    public String uploadImages(MultipartFile[] files, List<Long> idArticulos) {
-        var respuesta = imagenArticuloService.uploadImages(files, idArticulos);
+    public String uploadImages(MultipartFile file) {
+        var respuesta = imagenArticuloService.uploadImages(file);
         return respuesta.getBody();
     }
 
