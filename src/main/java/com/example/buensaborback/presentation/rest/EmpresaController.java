@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/empresas")
 @CrossOrigin("*")
-public class EmpresaController extends BaseControllerImp<Empresa, EmpresaDto,EmpresaDto, Long, EmpresaFacadeImpl> {
+public class EmpresaController extends BaseControllerImp<Empresa, EmpresaDto, EmpresaDto, Long, EmpresaFacadeImpl> {
     public EmpresaController(EmpresaFacadeImpl facade) {
         super(facade);
     }
 
     @PutMapping("/addSucursal")
-    public ResponseEntity<EmpresaLargeDto> addSucursal(@RequestParam Long idEmpresa, @RequestParam Long idSucursal){
-        return ResponseEntity.ok(facade.addSucursal(idEmpresa,idSucursal));
+    public ResponseEntity<EmpresaLargeDto> addSucursal(@RequestParam Long idEmpresa, @RequestParam Long idSucursal) {
+        return ResponseEntity.ok(facade.addSucursal(idEmpresa, idSucursal));
     }
 }
+
