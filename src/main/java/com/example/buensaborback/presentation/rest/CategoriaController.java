@@ -43,6 +43,10 @@ public class CategoriaController extends BaseControllerImp<Categoria, CategoriaP
 
     @DeleteMapping("/baja/{id}")
     public void deleteById(@PathVariable Long id, @RequestBody SucursalShortDto sucursal) {
+        if (id == null) {
+            throw new IllegalArgumentException("El ID no debe ser nulo");
+        }
         facade.deleteInSucursales(id, sucursal);
     }
+
 }

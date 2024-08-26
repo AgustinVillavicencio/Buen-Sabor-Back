@@ -11,5 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SucursalShortDto extends BaseDto {
+    private Long id;    // Agrega el ID de la sucursal
     private String nombre;
 }

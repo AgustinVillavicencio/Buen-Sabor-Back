@@ -115,14 +115,16 @@ public class CategoriaServiceImp extends BaseServiceImp<Categoria,Long> implemen
         Categoria categoriaExistente = categoriaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("La categoría con el ID " + id + " no existe."));
 
-        Sucursal sucursal = sucursalService.getById(sucursalShort.getId());
+        List<Sucursal> sucursales = sucursalService.getAll();  // Asume que tienes un método para obtener todas las sucursales
 
-        // Eliminar la relación entre la sucursal y la categoría existente
-        sucursal.getCategorias().remove(categoriaExistente);
-        categoriaExistente.getSucursales().remove(sucursal);
+        for (Sucursal sucursal : sucursales) {
+            sucursal.getCategorias().remove(categoriaExistente);
+            categoriaExistente.getSucursales().remove(sucursal);
+        }
 
         categoriaRepository.save(categoriaExistente);
     }
+
 
     @Override
     public Categoria update(Categoria newCategoria, Long id) {
