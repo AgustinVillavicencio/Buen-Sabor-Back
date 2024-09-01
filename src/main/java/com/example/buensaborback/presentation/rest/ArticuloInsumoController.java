@@ -41,6 +41,7 @@ public class ArticuloInsumoController extends BaseControllerImp<ArticuloInsumo, 
 
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ArticuloInsumoPostDto entity) {
+        System.out.println("Datos recibidos en el controlador: " + entity);
         try{
             return ResponseEntity.ok(facade.createConSucursales(entity));
         }catch (Exception e){

@@ -16,6 +16,8 @@ import com.example.buensaborback.domain.dto.SucursalDtos.SucursalShortDto;
 import com.example.buensaborback.domain.entities.ArticuloInsumo;
 import com.example.buensaborback.domain.entities.ArticuloManufacturado;
 import com.example.buensaborback.domain.entities.Sucursal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -37,6 +39,8 @@ public class ArticuloInsumoFacadeImp extends BaseFacadeImp<ArticuloInsumo, Artic
 
     @Autowired
     SucursalMapper sucursalMapper;
+
+    private static final Logger logger = LoggerFactory.getLogger(ArticuloInsumoService.class);
 
     public ArticuloInsumoFacadeImp(BaseService<ArticuloInsumo, Long> baseService, BaseMapper<ArticuloInsumo, ArticuloInsumoDto, ArticuloInsumoDto> baseMapper) {
         super(baseService, baseMapper);
@@ -75,13 +79,24 @@ public class ArticuloInsumoFacadeImp extends BaseFacadeImp<ArticuloInsumo, Artic
     }
 
     public List<ArticuloInsumoDto> createConSucursales(ArticuloInsumoPostDto request) {
+        logger.info("ARTICULO INSUMO FACADE");
+        logger.info("Iniciando el método createConSucursales con request: {}", request);
         Set<SucursalShortDto> sucursalesDto = request.getSucursales();
+        logger.info("Sucursales DTO antes de la conversión: {}", sucursalesDto);
         Set<Sucursal> sucursales = sucursalMapper.toEntitiesShort(sucursalesDto);
+        logger.info("Sucursales entidades después de la conversión: {}", sucursales);
         ArticuloInsumo entityToCreate = articuloInsumoMapper.toEntityArticuloInsumo(request);
+        logger.info("Entidad ArticuloInsumo a crear: {}", entityToCreate);
         // Graba una entidad
         var entityCreated = articuloInsumoService.create(entityToCreate, sucursales);
+        logger.info("Entidad ArticuloInsumo creada: {}", entityCreated);
         // convierte a Dto para devolver
-        return articuloInsumoMapper.toPostDtoList(entityCreated);
+
+        // Conversión de la entidad a DTO para devolver
+        List<ArticuloInsumoDto> result = articuloInsumoMapper.toPostDtoList(entityCreated);
+        logger.info("Resultado en DTO después de la conversión: {}", result);
+
+        return result;
     }
 
     public List<ArticuloInsumoDto> duplicateInOtherSucursales(Long id, Set<SucursalShortDto> sucursales) {

@@ -108,13 +108,14 @@ public class ArticuloManufacturadoServiceImp extends BaseServiceImp<ArticuloManu
 
     private ArticuloManufacturado createArticuloManufacturado(ArticuloManufacturado request, Sucursal sucursal, Categoria categoria) {
         ArticuloManufacturado nuevoArticulo = new ArticuloManufacturado(
-                request.getDenominacion(),
+                        request.getDenominacion(),
+                request.getCategoria(),
                 request.getPrecioVenta(),
-                request.getUnidadMedida(),
-                request.getDescripcion(),
-                request.getTiempoEstimadoMinutos(),
-                request.getPreparacion()
-        );
+                        request.getUnidadMedida(),
+                        request.getDescripcion(),
+                        request.getTiempoEstimadoMinutos(),
+                        request.getPreparacion()
+                );
 
         nuevoArticulo.setImagenes(new HashSet<>(request.getImagenes()));
 

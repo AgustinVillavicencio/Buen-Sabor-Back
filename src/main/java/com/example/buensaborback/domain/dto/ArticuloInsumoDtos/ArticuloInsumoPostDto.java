@@ -16,4 +16,20 @@ public class ArticuloInsumoPostDto extends ArticuloPostDto {
     private Integer stockMinimo;
     private Integer stockMaximo;
     private Boolean esParaElaborar;
+
+    @Override
+    public String toString() {
+        return "ArticuloInsumoPostDto{" +
+                "denominacion='" + denominacion + '\'' +
+                ", precioVenta=" + precioVenta +
+                ", unidadMedida=" + unidadMedida +
+                ", categoriaId=" + categoria +
+                ", precioCompra=" + precioCompra +
+                ", stockActual=" + stockActual +
+                ", stockMinimo=" + stockMinimo +
+                ", stockMaximo=" + stockMaximo +
+                ", esParaElaborar=" + esParaElaborar +
+                '}';
+    }
+
 }

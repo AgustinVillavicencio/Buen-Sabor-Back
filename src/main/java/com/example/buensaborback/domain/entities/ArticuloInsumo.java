@@ -22,8 +22,8 @@ public class ArticuloInsumo extends Articulo {
     private Integer stockMaximo;
     private Boolean esParaElaborar;
 
-    public ArticuloInsumo(String denominacion, Double precioVenta, UnidadMedida unidadMedida, Double precioCompra, Double stockActual, Integer stockMinimo, Integer stockMaximo, Boolean esParaElaborar) {
-        super(denominacion, precioVenta, unidadMedida);
+    public ArticuloInsumo(String denominacion, Double precioVenta, UnidadMedida unidadMedida,Categoria categoria, Double precioCompra, Double stockActual, Integer stockMinimo, Integer stockMaximo, Boolean esParaElaborar) {
+        super(denominacion, precioVenta, unidadMedida, categoria);
         this.precioCompra = precioCompra;
         this.stockActual = stockActual;
         this.stockMinimo = stockMinimo;

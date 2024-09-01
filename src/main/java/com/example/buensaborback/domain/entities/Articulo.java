@@ -46,7 +46,7 @@ public class Articulo extends Base {
     @JoinColumn(name = "categoria_id")
     @JsonIgnoreProperties("articulos")
     @NotAudited
-    private Categoria categoria;
+    protected Categoria categoria;
 
     @ManyToOne
     @JoinColumn(name = "sucursal_id")
@@ -54,10 +54,11 @@ public class Articulo extends Base {
     @NotAudited
     private Sucursal sucursal;
 
-    public Articulo(String denominacion, Double precioVenta, UnidadMedida unidadMedida) {
+    public Articulo(String denominacion, Double precioVenta, UnidadMedida unidadMedida, Categoria categoria) {
         this.denominacion = denominacion;
         this.precioVenta = precioVenta;
         this.unidadMedida = unidadMedida;
+        this.categoria= categoria;
     }
 }
 

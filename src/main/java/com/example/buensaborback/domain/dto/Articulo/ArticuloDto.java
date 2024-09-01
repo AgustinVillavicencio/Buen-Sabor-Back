@@ -21,5 +21,5 @@ public class ArticuloDto extends BaseDto {
     protected Set<ImagenArticuloDto> imagenes = new HashSet<>();
     protected UnidadMedidaDto unidadMedida;
     protected CategoriaDto categoria;
-    private SucursalShortDto sucursal;
+    protected SucursalShortDto sucursal;
 }
