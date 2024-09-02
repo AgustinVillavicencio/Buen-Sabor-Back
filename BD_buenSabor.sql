@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 20-08-2024 a las 00:20:51
+-- Tiempo de generación: 02-09-2024 a las 00:18:01
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -40,7 +40,65 @@ CREATE TABLE IF NOT EXISTS `articulo` (
   KEY `FK35xlp590328eybh2pf5ublsne` (`categoria_id`),
   KEY `FKqmk7iluj5x46yimu6dl1sbbks` (`sucursal_id`),
   KEY `FKlf2hbqm1r4qx36lkr0b4mix6b` (`unidad_medida_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`id`, `baja`, `denominacion`, `precio_venta`, `categoria_id`, `sucursal_id`, `unidad_medida_id`) VALUES
+(34, b'0', 'Harina', NULL, 10, 1, 1),
+(35, b'0', 'Harina', NULL, 10, 2, 1),
+(36, b'0', 'Leche', NULL, 11, 1, 3),
+(37, b'0', 'Leche', NULL, 11, 2, 3),
+(38, b'0', 'Tomate', NULL, 6, 1, 1),
+(39, b'0', 'Tomate', NULL, 6, 2, 1),
+(40, b'0', 'Lechuga', NULL, 6, 2, 1),
+(41, b'0', 'Lechuga', NULL, 6, 1, 1),
+(42, b'0', 'Pan de Hamburguesa', NULL, 10, 2, 5),
+(43, b'0', 'Pan de Hamburguesa', NULL, 10, 1, 5),
+(44, b'0', 'Mayonesa', NULL, 9, 1, 1),
+(45, b'0', 'Mayonesa', NULL, 9, 2, 1),
+(46, b'0', 'Ketchup', NULL, 9, 1, 1),
+(47, b'0', 'Ketchup', NULL, 9, 2, 1),
+(48, b'0', 'Pan de Pancho', NULL, 10, 2, 1),
+(49, b'0', 'Pan de Pancho', NULL, 10, 1, 1),
+(50, b'0', 'Salchicha', NULL, 7, 2, 5),
+(51, b'0', 'Salchicha', NULL, 7, 1, 5),
+(52, b'0', 'Queso', NULL, 11, 1, 1),
+(53, b'0', 'Queso', NULL, 11, 2, 1),
+(54, b'0', 'Papa', NULL, 6, 1, 1),
+(55, b'0', 'Papa', NULL, 6, 2, 1),
+(56, b'0', 'Huevo', NULL, 10, 2, 5),
+(57, b'0', 'Huevo', NULL, 10, 1, 5),
+(58, b'0', 'Salsa Golf', NULL, 9, 1, 1),
+(59, b'0', 'Salsa Golf', NULL, 9, 2, 1),
+(60, b'0', 'Carne Molida', NULL, 7, 1, 1),
+(61, b'0', 'Carne Molida', NULL, 7, 2, 1),
+(62, b'0', 'Carne de Lomo', NULL, 7, 2, 1),
+(63, b'0', 'Carne de Lomo', NULL, 7, 1, 1),
+(64, b'0', 'Levadura', NULL, 10, 2, 1),
+(65, b'0', 'Levadura', NULL, 10, 1, 1),
+(66, b'0', 'Salsa', NULL, 10, 2, 3),
+(67, b'0', 'Salsa', NULL, 10, 1, 3),
+(68, b'0', 'Muzarella', NULL, 11, 1, 1),
+(69, b'0', 'Muzarella', NULL, 11, 2, 1),
+(70, b'0', 'Jamon', NULL, 7, 2, 1),
+(71, b'0', 'Jamon', NULL, 7, 1, 1),
+(72, b'0', 'Pimiento', NULL, 6, 2, 1),
+(73, b'0', 'Pimiento', NULL, 6, 1, 1),
+(74, b'0', 'Anana', NULL, 6, 2, 1),
+(75, b'0', 'Anana', NULL, 6, 1, 1),
+(76, b'0', 'Azucar', NULL, 10, 1, 1),
+(77, b'0', 'Azucar', NULL, 10, 2, 1),
+(78, b'0', 'Cebolla', NULL, 6, 1, 1),
+(79, b'0', 'Cebolla', NULL, 6, 2, 1),
+(80, b'0', 'Sal', NULL, 10, 2, 1),
+(81, b'0', 'Sal', NULL, 10, 1, 1),
+(82, b'0', 'Aceite', NULL, 10, 2, 3),
+(83, b'0', 'Aceite', NULL, 10, 1, 3),
+(84, b'0', 'Oregano', NULL, 10, 1, 1),
+(85, b'0', 'Oregano', NULL, 10, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -57,6 +115,96 @@ CREATE TABLE IF NOT EXISTS `articulo_aud` (
   `precio_venta` double DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `articulo_aud`
+--
+
+INSERT INTO `articulo_aud` (`id`, `rev`, `revtype`, `denominacion`, `precio_venta`) VALUES
+(1, 252, 0, 'Harina', 50),
+(2, 252, 0, 'Harina', 50),
+(3, 253, 0, 'Harina', 50),
+(4, 253, 0, 'Harina', 50),
+(5, 254, 0, 'Harina', 50),
+(6, 254, 0, 'Harina', 50),
+(7, 255, 0, 'Harina', 50),
+(8, 255, 0, 'Harina', 50),
+(9, 302, 0, 'Harina', 50),
+(10, 302, 0, 'Harina', 50),
+(11, 352, 0, 'Harina', 50),
+(12, 352, 0, 'Harina', 50),
+(13, 402, 0, 'Harina', 50),
+(14, 402, 0, 'Harina', 50),
+(15, 403, 0, 'Harina', 50),
+(16, 403, 0, 'Harina', 50),
+(17, 452, 0, 'Harina', 50),
+(18, 452, 0, 'Harina', 50),
+(19, 453, 0, 'Harina', 50),
+(20, 453, 0, 'Harina', 50),
+(21, 502, 0, 'Harina', 50),
+(22, 502, 0, 'Harina', 50),
+(23, 552, 0, 'Harina', 50),
+(24, 552, 0, 'Harina', 50),
+(26, 553, 0, 'Harina', 50),
+(27, 553, 0, 'Harina', 50),
+(28, 602, 0, 'Harina', 50),
+(29, 602, 0, 'Harina', 50),
+(30, 652, 0, 'Harina', 50),
+(31, 652, 0, 'Harina', 50),
+(32, 702, 0, 'Harina', 50),
+(33, 702, 0, 'Harina', 50),
+(34, 752, 0, 'Harina', 50),
+(35, 752, 0, 'Harina', 50),
+(36, 753, 0, 'Leche', 50),
+(37, 753, 0, 'Leche', 50),
+(38, 802, 0, 'Tomate', 5),
+(39, 802, 0, 'Tomate', 5),
+(40, 803, 0, 'Lechuga', 5),
+(41, 803, 0, 'Lechuga', 5),
+(42, 804, 0, 'Pan de Hamburguesa', NULL),
+(43, 804, 0, 'Pan de Hamburguesa', NULL),
+(44, 805, 0, 'Mayonesa', NULL),
+(45, 805, 0, 'Mayonesa', NULL),
+(46, 806, 0, 'Ketchup', NULL),
+(47, 806, 0, 'Ketchup', NULL),
+(48, 807, 0, 'Pan de Pancho', NULL),
+(49, 807, 0, 'Pan de Pancho', NULL),
+(50, 808, 0, 'Salchicha', NULL),
+(51, 808, 0, 'Salchicha', NULL),
+(52, 809, 0, 'Queso', NULL),
+(53, 809, 0, 'Queso', NULL),
+(54, 810, 0, 'Papa', NULL),
+(55, 810, 0, 'Papa', NULL),
+(56, 811, 0, 'Huevo', NULL),
+(57, 811, 0, 'Huevo', NULL),
+(58, 812, 0, 'Salsa Golf', NULL),
+(59, 812, 0, 'Salsa Golf', NULL),
+(60, 813, 0, 'Carne Molida', NULL),
+(61, 813, 0, 'Carne Molida', NULL),
+(62, 814, 0, 'Carne de Lomo', NULL),
+(63, 814, 0, 'Carne de Lomo', NULL),
+(64, 815, 0, 'Levadura', NULL),
+(65, 815, 0, 'Levadura', NULL),
+(66, 816, 0, 'Salsa', NULL),
+(67, 816, 0, 'Salsa', NULL),
+(68, 817, 0, 'Muzarella', NULL),
+(69, 817, 0, 'Muzarella', NULL),
+(70, 818, 0, 'Jamon', NULL),
+(71, 818, 0, 'Jamon', NULL),
+(72, 819, 0, 'Pimiento', NULL),
+(73, 819, 0, 'Pimiento', NULL),
+(74, 820, 0, 'Anana', NULL),
+(75, 820, 0, 'Anana', NULL),
+(76, 821, 0, 'Azucar', NULL),
+(77, 821, 0, 'Azucar', NULL),
+(78, 822, 0, 'Cebolla', NULL),
+(79, 822, 0, 'Cebolla', NULL),
+(80, 823, 0, 'Sal', NULL),
+(81, 823, 0, 'Sal', NULL),
+(82, 824, 0, 'Aceite', NULL),
+(83, 824, 0, 'Aceite', NULL),
+(84, 825, 0, 'Oregano', NULL),
+(85, 825, 0, 'Oregano', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,19 +245,71 @@ CREATE TABLE IF NOT EXISTS `articulo_imagen_aud` (
 DROP TABLE IF EXISTS `articulo_insumo`;
 CREATE TABLE IF NOT EXISTS `articulo_insumo` (
   `id` bigint NOT NULL,
-  `denominacion` varchar(255) DEFAULT NULL,
-  `precio_venta` double DEFAULT NULL,
-  `categoria_id` bigint DEFAULT NULL,
-  `unidad_medida_id` bigint DEFAULT NULL,
   `es_para_elaborar` bit(1) DEFAULT NULL,
   `precio_compra` double DEFAULT NULL,
   `stock_actual` double DEFAULT NULL,
   `stock_maximo` int DEFAULT NULL,
   `stock_minimo` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_bq24pwi1icjnu04cdhfq8qik2` (`categoria_id`),
-  KEY `FK_t87v5vp2gygwbhs0s5t4x78aj` (`unidad_medida_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `articulo_insumo`
+--
+
+INSERT INTO `articulo_insumo` (`id`, `es_para_elaborar`, `precio_compra`, `stock_actual`, `stock_maximo`, `stock_minimo`) VALUES
+(34, b'1', 45, 100, 200, 20),
+(35, b'1', 45, 100, 200, 20),
+(36, b'1', 60, 1000, 2000, 20),
+(37, b'1', 60, 555, 2000, 20),
+(38, b'1', 3, 500, 3000, 30),
+(39, b'1', 3, 500, 3000, 30),
+(40, b'1', 3, 600, 1000, 40),
+(41, b'1', 3, 600, 1000, 40),
+(42, b'1', 40, 90, 1000, 10),
+(43, b'1', 40, 90, 1000, 10),
+(44, b'1', 30, 900, 1000, 100),
+(45, b'1', 30, 900, 1000, 100),
+(46, b'1', 31, 800, 1000, 100),
+(47, b'1', 31, 800, 1000, 100),
+(48, b'1', 10, 100, 800, 40),
+(49, b'1', 10, 100, 800, 40),
+(50, b'1', 8, 400, 500, 80),
+(51, b'1', 8, 400, 500, 80),
+(52, b'1', 15, 80, 600, 10),
+(53, b'1', 15, 80, 600, 10),
+(54, b'1', 9, 50, 200, 5),
+(55, b'1', 9, 50, 200, 5),
+(56, b'1', 10, 64, 500, 10),
+(57, b'1', 10, 64, 500, 10),
+(58, b'1', 24, 90, 200, 5),
+(59, b'1', 24, 90, 200, 5),
+(60, b'1', 50, 500, 2000, 10),
+(61, b'1', 50, 500, 2000, 10),
+(62, b'1', 10, 100, 2000, 10),
+(63, b'1', 10, 100, 2000, 10),
+(64, b'1', 5, 10, 50, 1),
+(65, b'1', 5, 10, 50, 1),
+(66, b'1', 13, 100, 200, 10),
+(67, b'1', 13, 100, 200, 10),
+(68, b'1', 20, 100, 200, 10),
+(69, b'1', 20, 100, 200, 10),
+(70, b'1', 15, 100, 300, 5),
+(71, b'1', 15, 100, 300, 5),
+(72, b'1', 16, 50, 200, 5),
+(73, b'1', 16, 50, 200, 5),
+(74, b'1', 35, 30, 100, 1),
+(75, b'1', 35, 30, 100, 1),
+(76, b'1', 22, 10, 50, 1),
+(77, b'1', 22, 10, 50, 1),
+(78, b'1', 9, 50, 100, 1),
+(79, b'1', 9, 50, 100, 1),
+(80, b'1', 10, 30, 100, 1),
+(81, b'1', 10, 30, 100, 1),
+(82, b'1', 16, 20, 80, 1),
+(83, b'1', 16, 20, 80, 1),
+(84, b'1', 6, 10, 50, 1),
+(85, b'1', 6, 10, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -129,6 +329,96 @@ CREATE TABLE IF NOT EXISTS `articulo_insumo_aud` (
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `articulo_insumo_aud`
+--
+
+INSERT INTO `articulo_insumo_aud` (`id`, `rev`, `es_para_elaborar`, `precio_compra`, `stock_actual`, `stock_maximo`, `stock_minimo`) VALUES
+(1, 252, b'1', 45, 100, 200, 20),
+(2, 252, b'1', 45, 100, 200, 20),
+(3, 253, b'1', 45, 100, 200, 20),
+(4, 253, b'1', 45, 100, 200, 20),
+(5, 254, b'1', 45, 100, 200, 20),
+(6, 254, b'1', 45, 100, 200, 20),
+(7, 255, b'1', 45, 100, 200, 20),
+(8, 255, b'1', 45, 100, 200, 20),
+(9, 302, b'1', 45, 100, 200, 20),
+(10, 302, b'1', 45, 100, 200, 20),
+(11, 352, b'1', 45, 100, 200, 20),
+(12, 352, b'1', 45, 100, 200, 20),
+(13, 402, b'1', 45, 100, 200, 20),
+(14, 402, b'1', 45, 100, 200, 20),
+(15, 403, b'1', 45, 100, 200, 20),
+(16, 403, b'1', 45, 100, 200, 20),
+(17, 452, b'1', 45, 100, 200, 20),
+(18, 452, b'1', 45, 100, 200, 20),
+(19, 453, b'1', 45, 100, 200, 20),
+(20, 453, b'1', 45, 100, 200, 20),
+(21, 502, b'1', 45, 100, 200, 20),
+(22, 502, b'1', 45, 100, 200, 20),
+(23, 552, b'1', 45, 100, 200, 20),
+(24, 552, b'1', 45, 100, 200, 20),
+(26, 553, b'1', 45, 100, 200, 20),
+(27, 553, b'1', 45, 100, 200, 20),
+(28, 602, b'1', 45, 100, 200, 20),
+(29, 602, b'1', 45, 100, 200, 20),
+(30, 652, b'1', 45, 100, 200, 20),
+(31, 652, b'1', 45, 100, 200, 20),
+(32, 702, b'1', 45, 100, 200, 20),
+(33, 702, b'1', 45, 100, 200, 20),
+(34, 752, b'1', 45, 100, 200, 20),
+(35, 752, b'1', 45, 100, 200, 20),
+(36, 753, b'1', 45, 100, 200, 20),
+(37, 753, b'1', 45, 100, 200, 20),
+(38, 802, b'1', 3, 500, 3000, 30),
+(39, 802, b'1', 3, 500, 3000, 30),
+(40, 803, b'1', 3, 600, 1000, 40),
+(41, 803, b'1', 3, 600, 1000, 40),
+(42, 804, b'1', 40, 90, 1000, 10),
+(43, 804, b'1', 40, 90, 1000, 10),
+(44, 805, b'1', 30, 900, 1000, 100),
+(45, 805, b'1', 30, 900, 1000, 100),
+(46, 806, b'1', 31, 800, 1000, 100),
+(47, 806, b'1', 31, 800, 1000, 100),
+(48, 807, b'1', 10, 100, 800, 40),
+(49, 807, b'1', 10, 100, 800, 40),
+(50, 808, b'1', 8, 400, 500, 80),
+(51, 808, b'1', 8, 400, 500, 80),
+(52, 809, b'1', 15, 80, 600, 10),
+(53, 809, b'1', 15, 80, 600, 10),
+(54, 810, b'1', 9, 50, 200, 5),
+(55, 810, b'1', 9, 50, 200, 5),
+(56, 811, b'1', 10, 64, 500, 10),
+(57, 811, b'1', 10, 64, 500, 10),
+(58, 812, b'1', 24, 90, 200, 5),
+(59, 812, b'1', 24, 90, 200, 5),
+(60, 813, b'1', 50, 500, 2000, 10),
+(61, 813, b'1', 50, 500, 2000, 10),
+(62, 814, b'1', 10, 100, 2000, 10),
+(63, 814, b'1', 10, 100, 2000, 10),
+(64, 815, b'1', 5, 10, 50, 1),
+(65, 815, b'1', 5, 10, 50, 1),
+(66, 816, b'1', 13, 100, 200, 10),
+(67, 816, b'1', 13, 100, 200, 10),
+(68, 817, b'1', 20, 100, 200, 10),
+(69, 817, b'1', 20, 100, 200, 10),
+(70, 818, b'1', 15, 100, 300, 5),
+(71, 818, b'1', 15, 100, 300, 5),
+(72, 819, b'1', 16, 50, 200, 5),
+(73, 819, b'1', 16, 50, 200, 5),
+(74, 820, b'1', 35, 30, 100, 1),
+(75, 820, b'1', 35, 30, 100, 1),
+(76, 821, b'1', 22, 10, 50, 1),
+(77, 821, b'1', 22, 10, 50, 1),
+(78, 822, b'1', 9, 50, 100, 1),
+(79, 822, b'1', 9, 50, 100, 1),
+(80, 823, b'1', 10, 30, 100, 1),
+(81, 823, b'1', 10, 30, 100, 1),
+(82, 824, b'1', 16, 20, 80, 1),
+(83, 824, b'1', 16, 20, 80, 1),
+(84, 825, b'1', 6, 10, 50, 1),
+(85, 825, b'1', 6, 10, 50, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -138,16 +428,10 @@ CREATE TABLE IF NOT EXISTS `articulo_insumo_aud` (
 DROP TABLE IF EXISTS `articulo_manufacturado`;
 CREATE TABLE IF NOT EXISTS `articulo_manufacturado` (
   `id` bigint NOT NULL,
-  `denominacion` varchar(255) DEFAULT NULL,
-  `precio_venta` double DEFAULT NULL,
-  `categoria_id` bigint DEFAULT NULL,
-  `unidad_medida_id` bigint DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `preparacion` varchar(255) DEFAULT NULL,
   `tiempo_estimado_minutos` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_rxvuc695pmrvn93gu3564up7y` (`categoria_id`),
-  KEY `FK_j2ltshqmxs8ksyttgpwm7tt27` (`unidad_medida_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -245,17 +529,34 @@ INSERT INTO `articulo_seq` (`next_val`) VALUES
 
 DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE IF NOT EXISTS `categoria` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `denominacion` varchar(255) DEFAULT NULL,
-  `categoria_id` bigint DEFAULT NULL,
   `baja` bit(1) NOT NULL,
   `es_insumo` bit(1) NOT NULL,
   `es_para_vender` bit(1) NOT NULL,
   `categoria_padre_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKjiixv3teefdkilvoysutbedif` (`categoria_id`),
   KEY `FKif4f273okqr2edqkm0xqxjlyk` (`categoria_padre_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `denominacion`, `baja`, `es_insumo`, `es_para_vender`, `categoria_padre_id`) VALUES
+(1, 'Bebidas', b'0', b'0', b'1', NULL),
+(2, 'Gaseosas', b'0', b'0', b'1', 1),
+(3, 'Pizzas', b'0', b'0', b'1', NULL),
+(4, 'Lomos', b'0', b'0', b'1', 5),
+(5, 'Sandwichs', b'0', b'0', b'1', NULL),
+(6, 'Vegetales', b'0', b'1', b'0', NULL),
+(7, 'Carnes', b'0', b'1', b'0', NULL),
+(8, 'Hamburguesas', b'0', b'0', b'1', 5),
+(9, 'Aderezos', b'0', b'1', b'0', NULL),
+(10, 'Otros Insumos', b'0', b'1', b'0', NULL),
+(11, 'Lacteos', b'0', b'1', b'0', NULL),
+(14, 'Papas Fritas', b'0', b'0', b'1', NULL),
+(18, 'Aguas', b'0', b'0', b'1', 1);
 
 -- --------------------------------------------------------
 
@@ -273,6 +574,35 @@ CREATE TABLE IF NOT EXISTS `categoria_aud` (
   `es_para_vender` bit(1) DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `categoria_aud`
+--
+
+INSERT INTO `categoria_aud` (`id`, `rev`, `revtype`, `denominacion`, `es_insumo`, `es_para_vender`) VALUES
+(1, 152, 0, 'Bebidas', b'0', b'1'),
+(2, 152, 0, 'Bebidas', b'0', b'1'),
+(3, 153, 0, 'Pizzas', b'0', b'1'),
+(4, 153, 0, 'Napolitana', b'0', b'1'),
+(5, 153, 0, 'Especial', b'0', b'1'),
+(6, 153, 0, 'Tropical', b'0', b'1'),
+(7, 153, 0, 'Fugazzeta', b'0', b'1'),
+(8, 154, 0, 'Hamburguesas', b'0', b'1'),
+(9, 154, 0, 'Doble Carne', b'0', b'1'),
+(10, 154, 0, 'Huevo Dibu', b'0', b'1'),
+(11, 154, 0, 'Triple Carne', b'0', b'1'),
+(12, 154, 0, 'Cheddar', b'0', b'1'),
+(13, 154, 0, 'Simple', b'0', b'1'),
+(14, 155, 0, 'Papas Fritas', b'0', b'1'),
+(15, 155, 0, 'Medianas', b'0', b'1'),
+(16, 155, 0, 'Grandes', b'0', b'1'),
+(17, 155, 0, 'XXL', b'0', b'1'),
+(18, 156, 0, 'Agua Saborizada', b'0', b'1'),
+(19, 157, 0, 'Agua natural sin gas', b'0', b'1'),
+(10, 202, 1, 'Huevo Dibu', b'0', b'1'),
+(19, 203, 1, 'Agua natural sin gas', b'0', b'1'),
+(5, 204, 1, 'Especial', b'0', b'1'),
+(17, 205, 1, 'XXL', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -1679,7 +2009,59 @@ INSERT INTO `revision_info` (`id`, `revision_date`) VALUES
 (53, '2024-08-13 21:04:15.628000'),
 (54, '2024-08-13 21:05:18.468000'),
 (102, '2024-08-19 21:06:03.469000'),
-(103, '2024-08-19 21:06:24.231000');
+(103, '2024-08-19 21:06:24.231000'),
+(152, '2024-08-20 21:10:47.215000'),
+(153, '2024-08-20 21:13:35.791000'),
+(154, '2024-08-20 21:16:51.201000'),
+(155, '2024-08-20 21:18:02.116000'),
+(156, '2024-08-20 21:22:33.768000'),
+(157, '2024-08-20 21:25:52.882000'),
+(202, '2024-08-26 17:46:56.833000'),
+(203, '2024-08-26 17:48:19.068000'),
+(204, '2024-08-26 20:36:52.956000'),
+(205, '2024-08-26 20:37:17.821000'),
+(252, '2024-08-26 22:05:03.538000'),
+(253, '2024-08-26 22:05:22.008000'),
+(254, '2024-08-26 22:11:59.423000'),
+(255, '2024-08-26 22:17:21.891000'),
+(302, '2024-08-26 22:26:08.740000'),
+(352, '2024-08-29 19:58:21.033000'),
+(402, '2024-08-30 20:58:06.216000'),
+(403, '2024-08-30 21:05:46.724000'),
+(452, '2024-08-30 21:10:41.540000'),
+(453, '2024-08-30 21:20:50.797000'),
+(502, '2024-08-30 21:27:26.303000'),
+(552, '2024-09-01 10:19:31.018000'),
+(553, '2024-09-01 11:11:53.017000'),
+(602, '2024-09-01 11:16:00.011000'),
+(652, '2024-09-01 11:48:05.790000'),
+(702, '2024-09-01 12:34:08.673000'),
+(752, '2024-09-01 19:41:48.418000'),
+(753, '2024-09-01 19:50:27.318000'),
+(802, '2024-09-01 20:00:57.074000'),
+(803, '2024-09-01 20:01:27.051000'),
+(804, '2024-09-01 20:03:48.316000'),
+(805, '2024-09-01 20:35:21.798000'),
+(806, '2024-09-01 20:35:50.736000'),
+(807, '2024-09-01 20:40:33.566000'),
+(808, '2024-09-01 20:46:10.001000'),
+(809, '2024-09-01 20:47:19.657000'),
+(810, '2024-09-01 20:48:08.791000'),
+(811, '2024-09-01 20:49:14.958000'),
+(812, '2024-09-01 20:50:47.464000'),
+(813, '2024-09-01 20:51:50.354000'),
+(814, '2024-09-01 20:57:56.544000'),
+(815, '2024-09-01 20:58:43.108000'),
+(816, '2024-09-01 20:59:47.449000'),
+(817, '2024-09-01 21:01:09.312000'),
+(818, '2024-09-01 21:03:05.606000'),
+(819, '2024-09-01 21:03:50.048000'),
+(820, '2024-09-01 21:06:11.819000'),
+(821, '2024-09-01 21:08:09.132000'),
+(822, '2024-09-01 21:09:10.116000'),
+(823, '2024-09-01 21:09:40.242000'),
+(824, '2024-09-01 21:11:36.710000'),
+(825, '2024-09-01 21:13:03.889000');
 
 -- --------------------------------------------------------
 
@@ -1697,7 +2079,7 @@ CREATE TABLE IF NOT EXISTS `revision_info_seq` (
 --
 
 INSERT INTO `revision_info_seq` (`next_val`) VALUES
-(201);
+(901);
 
 -- --------------------------------------------------------
 
@@ -1720,7 +2102,7 @@ CREATE TABLE IF NOT EXISTS `sucursal` (
   UNIQUE KEY `UK_34hifwa9nn1cgdbjgkosx0wy2` (`domicilio_id`),
   UNIQUE KEY `UK_360r6sip78ax5am2e1yk574ry` (`imagen_sucursal_id`),
   KEY `FK3w56rbjykxbp2e79cdq0xsghd` (`empresa_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `sucursal`
@@ -1754,7 +2136,24 @@ CREATE TABLE IF NOT EXISTS `sucursal_aud` (
 
 INSERT INTO `sucursal_aud` (`id`, `rev`, `revtype`, `es_casa_matriz`, `horario_apertura`, `horario_cierre`, `nombre`) VALUES
 (1, 102, 0, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
-(2, 103, 0, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central');
+(2, 103, 0, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(1, 152, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 152, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 153, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 153, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 154, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 154, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 155, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 155, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 156, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(1, 157, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(1, 202, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 202, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 203, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(1, 204, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 204, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste'),
+(1, 205, 1, b'1', '09:00:00.000000', '18:00:00.000000', 'Sucursal Central'),
+(2, 205, 1, b'0', '09:00:00.000000', '18:00:00.000000', 'Sucursal Oeste');
 
 -- --------------------------------------------------------
 
@@ -1770,6 +2169,38 @@ CREATE TABLE IF NOT EXISTS `sucursal_categoria` (
   KEY `FKtcbmv4283gg4r2ds9v510up26` (`categoria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `sucursal_categoria`
+--
+
+INSERT INTO `sucursal_categoria` (`sucursal_id`, `categoria_id`) VALUES
+(1, 1),
+(2, 1),
+(1, 2),
+(2, 2),
+(1, 3),
+(2, 3),
+(1, 4),
+(2, 4),
+(1, 5),
+(2, 5),
+(1, 6),
+(2, 6),
+(1, 7),
+(2, 7),
+(1, 8),
+(2, 8),
+(1, 9),
+(2, 9),
+(1, 10),
+(2, 10),
+(1, 11),
+(2, 11),
+(1, 14),
+(2, 14),
+(1, 18),
+(2, 18);
+
 -- --------------------------------------------------------
 
 --
@@ -1784,6 +2215,55 @@ CREATE TABLE IF NOT EXISTS `sucursal_categoria_aud` (
   `revtype` tinyint DEFAULT NULL,
   PRIMARY KEY (`rev`,`sucursal_id`,`categoria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `sucursal_categoria_aud`
+--
+
+INSERT INTO `sucursal_categoria_aud` (`rev`, `sucursal_id`, `categoria_id`, `revtype`) VALUES
+(152, 1, 1, 0),
+(152, 1, 2, 0),
+(152, 2, 1, 0),
+(152, 2, 2, 0),
+(153, 1, 3, 0),
+(153, 1, 4, 0),
+(153, 1, 5, 0),
+(153, 1, 6, 0),
+(153, 1, 7, 0),
+(153, 2, 3, 0),
+(153, 2, 4, 0),
+(153, 2, 5, 0),
+(153, 2, 6, 0),
+(153, 2, 7, 0),
+(154, 1, 8, 0),
+(154, 1, 9, 0),
+(154, 1, 10, 0),
+(154, 1, 11, 0),
+(154, 1, 12, 0),
+(154, 1, 13, 0),
+(154, 2, 8, 0),
+(154, 2, 9, 0),
+(154, 2, 10, 0),
+(154, 2, 11, 0),
+(154, 2, 12, 0),
+(154, 2, 13, 0),
+(155, 1, 14, 0),
+(155, 1, 15, 0),
+(155, 1, 16, 0),
+(155, 1, 17, 0),
+(155, 2, 14, 0),
+(155, 2, 15, 0),
+(155, 2, 16, 0),
+(155, 2, 17, 0),
+(156, 1, 18, 0),
+(157, 1, 19, 0),
+(202, 1, 10, 2),
+(202, 2, 10, 2),
+(203, 1, 19, 2),
+(204, 1, 5, 2),
+(204, 2, 5, 2),
+(205, 1, 17, 2),
+(205, 2, 17, 2);
 
 -- --------------------------------------------------------
 
