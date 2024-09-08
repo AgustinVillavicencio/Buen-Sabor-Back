@@ -12,5 +12,4 @@ import lombok.Setter;
 @Setter
 public class SucursalShortDto extends BaseDto {
     private Long id;
-    private String nombre;
 }
