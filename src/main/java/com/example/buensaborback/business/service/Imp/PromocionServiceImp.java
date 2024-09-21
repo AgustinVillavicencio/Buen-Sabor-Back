@@ -124,28 +124,24 @@ public class PromocionServiceImp extends BaseServiceImp<Promocion,Long> implemen
 
         nuevaPromocion.setImagenes(new HashSet<>(request.getImagenes()));
 
-        Set<PromocionDetalle> detalles = request.getPromocionDetalles();
+        Set<PromocionDetalle> detallesExistentes = request.getPromocionDetalles();
         Set<PromocionDetalle> nuevosDetalles = new HashSet<>();
 
-        if (detalles != null && !detalles.isEmpty()) {
-            for (PromocionDetalle detalle : detalles) {
+        if (detallesExistentes != null && !detallesExistentes.isEmpty()) {
+            for (PromocionDetalle detalle : detallesExistentes) {
                 Articulo articuloExistente = articuloRepository.findById(detalle.getArticulo().getId()).orElseThrow(() -> new RuntimeException("Uno de los artículos enviados no es válido."));
-                if (articuloExistente instanceof ArticuloInsumo)
-                     articuloExistente = articuloInsumoRepository.findBySucursal_IdAndDenominacionContainingIgnoreCase(sucursal.getId(), detalle.getArticulo().getDenominacion());
-                else if (articuloExistente instanceof ArticuloManufacturado)
-                    articuloExistente = articuloManufacturadoRepository.findBySucursal_IdAndDenominacionContainingIgnoreCase(sucursal.getId(), detalle.getArticulo().getDenominacion());
-                else
-                    throw new RuntimeException("El artículo " + detalle.getArticulo().getDenominacion() + " no se ha encontrado en la sucursal " + sucursal.getNombre());
-
-                if (articuloExistente == null) {
-                    throw new RuntimeException("El artículo " + detalle.getArticulo().getDenominacion() + " no se ha encontrado en la sucursal " + sucursal.getNombre());
-                }
                 PromocionDetalle nuevoDetalle = new PromocionDetalle();
                 nuevoDetalle.setCantidad(detalle.getCantidad());
                 nuevoDetalle.setArticulo(articuloExistente);
                 nuevosDetalles.add(nuevoDetalle);
             }
-            nuevaPromocion.setPromocionDetalles(nuevosDetalles);
+
+            // En lugar de reemplazar, agregamos los nuevos detalles a los existentes
+            if (nuevaPromocion.getPromocionDetalles() != null) {
+                nuevaPromocion.getPromocionDetalles().addAll(nuevosDetalles);
+            } else {
+                nuevaPromocion.setPromocionDetalles(nuevosDetalles);
+            }
         } else {
             throw new RuntimeException("La promoción debe tener al menos un detalle.");
         }
@@ -153,6 +149,7 @@ public class PromocionServiceImp extends BaseServiceImp<Promocion,Long> implemen
         nuevaPromocion.setSucursal(sucursal);
         return nuevaPromocion;
     }
+
 
     private void updateImagenes(Promocion request, Promocion promocionExistente) {
         Set<ImagenPromocion> imagenes = request.getImagenes();

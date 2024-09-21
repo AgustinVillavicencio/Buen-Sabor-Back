@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-09-2024 a las 21:39:24
--- Versión del servidor: 8.0.31
--- Versión de PHP: 8.0.26
+-- Tiempo de generación: 21-09-2024 a las 17:39:17
+-- Versión del servidor: 8.3.0
+-- Versión de PHP: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -127,16 +127,16 @@ INSERT INTO `articulo` (`id`, `baja`, `denominacion`, `precio_venta`, `categoria
 (112, b'0', 'Papas clasicas', 400, 14, 1, 5),
 (113, b'0', 'Papas a caballo', 500, 14, 1, 5),
 (114, b'0', 'Papas a caballo', 500, 14, 2, 5),
-(115, b'0', 'Coca Cola 1.25L', NULL, 2, 2, 3),
-(116, b'0', 'Coca Cola 1.25L', NULL, 2, 1, 3),
-(117, b'0', 'Coca Cola 3L', NULL, 2, 2, 3),
-(118, b'0', 'Coca Cola 3L', NULL, 2, 1, 3),
-(119, b'0', 'Villa del Sur Levite 1.25L', NULL, 18, 1, 3),
-(120, b'0', 'Villa del Sur Levite 1.25L', NULL, 18, 2, 3),
-(121, b'0', 'Villa del Sur Levite 2.25L', NULL, 18, 1, 3),
-(122, b'0', 'Villa del Sur Levite 2.25L', NULL, 18, 2, 3),
-(123, b'0', 'Villavicencio 1L', NULL, 18, 1, 3),
-(124, b'0', 'Villavicencio 1L', NULL, 18, 2, 3),
+(115, b'0', 'Coca Cola 1.25L', 700, 2, 2, 3),
+(116, b'0', 'Coca Cola 1.25L', 700, 2, 1, 3),
+(117, b'0', 'Coca Cola 3L', 800, 2, 2, 3),
+(118, b'0', 'Coca Cola 3L', 800, 2, 1, 3),
+(119, b'0', 'Villa del Sur Levite 1.25L', 600, 18, 1, 3),
+(120, b'0', 'Villa del Sur Levite 1.25L', 600, 18, 2, 3),
+(121, b'0', 'Villa del Sur Levite 2.25L', 725, 18, 1, 3),
+(122, b'0', 'Villa del Sur Levite 2.25L', 725, 18, 2, 3),
+(123, b'0', 'Villavicencio 1L', 500, 18, 1, 3),
+(124, b'0', 'Villavicencio 1L', 500, 18, 2, 3),
 (125, b'0', 'Pancho Simple', 400, 14, 1, 5),
 (126, b'0', 'Pancho Simple', 400, 14, 2, 5),
 (127, b'0', 'Pancho doble', 500, 14, 2, 5),
@@ -1410,20 +1410,19 @@ INSERT INTO `domicilio_seq` (`next_val`) VALUES
 DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE IF NOT EXISTS `empleado` (
   `id` bigint NOT NULL,
-  `apellido` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `telefono` varchar(255) DEFAULT NULL,
-  `tipo_empleado` tinyint DEFAULT NULL,
-  `imagen_empleado_id` bigint DEFAULT NULL,
   `sucursal_id` bigint DEFAULT NULL,
   `usuario_empleado_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_o2cppi3v44p7h2vibx0pe3lah` (`imagen_empleado_id`),
   UNIQUE KEY `UK_f2mjsug9ttwgbw9o4qwun93it` (`usuario_empleado_id`),
   KEY `FKkv68lx8xpbpv6jprh7taieaej` (`sucursal_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`id`, `sucursal_id`, `usuario_empleado_id`) VALUES
+(1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1438,6 +1437,13 @@ CREATE TABLE IF NOT EXISTS `empleado_aud` (
   `sucursal_id` bigint DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `empleado_aud`
+--
+
+INSERT INTO `empleado_aud` (`id`, `rev`, `sucursal_id`) VALUES
+(1, 1103, 1);
 
 -- --------------------------------------------------------
 
@@ -1712,14 +1718,28 @@ CREATE TABLE IF NOT EXISTS `imagen_persona` (
 
 DROP TABLE IF EXISTS `imagen_promocion`;
 CREATE TABLE IF NOT EXISTS `imagen_promocion` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
   `promocion_id` bigint DEFAULT NULL,
   `baja` bit(1) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKfigh8y0s5beb3p1f7jaab8brr` (`promocion_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `imagen_promocion`
+--
+
+INSERT INTO `imagen_promocion` (`id`, `url`, `promocion_id`, `baja`, `name`) VALUES
+(1, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/sduwlxjhpcl9lmoa3n4r', 1, b'0', 'pngwing.com (1).png'),
+(2, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/rzhwtiuqk2dpaul7sajm', 2, b'0', 'pngwing.com (1).png'),
+(3, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/tv0bt5x6pnzh8kyhs2bs', 3, b'0', 'a1daa5972ebd6ed1de6b2e8ff2a1af30.jpg'),
+(4, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/eswbpsdztmiix1rd9twa', 4, b'0', 'a1daa5972ebd6ed1de6b2e8ff2a1af30.jpg'),
+(6, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/q9yqeujjkrqhoqcruhbf', 5, b'0', '5fc5624757b73.jpeg'),
+(7, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/svv1kz3qhcva1kjjkudk', 6, b'0', '5fc5624757b73.jpeg'),
+(8, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/x9ybza8obeem4vicatn1', 7, b'0', 'descarga.jpg'),
+(9, 'https://res.cloudinary.com/dtxgrqsqq/image/upload/glz2jjcrrk09ilfmbf0h', 8, b'0', 'descarga.jpg');
 
 -- --------------------------------------------------------
 
@@ -2407,7 +2427,14 @@ CREATE TABLE IF NOT EXISTS `persona` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_aef1ew8mf4bdu32jdjk0gv69q` (`imagen_persona_id`),
   UNIQUE KEY `UK_nefbl9obym4qiqpf6cd4bb2dj` (`usuario_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`id`, `baja`, `apellido`, `fecha_nacimiento`, `nombre`, `telefono`, `imagen_persona_id`, `usuario_id`) VALUES
+(1, b'0', 'Perez', '1990-01-01', 'Juan', '123456789', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -2426,6 +2453,13 @@ CREATE TABLE IF NOT EXISTS `persona_aud` (
   `telefono` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `persona_aud`
+--
+
+INSERT INTO `persona_aud` (`id`, `rev`, `revtype`, `apellido`, `fecha_nacimiento`, `nombre`, `telefono`) VALUES
+(1, 1103, 0, 'Perez', '1990-01-01', 'Juan', '123456789');
 
 -- --------------------------------------------------------
 
@@ -2448,7 +2482,21 @@ CREATE TABLE IF NOT EXISTS `promocion` (
   `sucursal_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKaulen6od3ay1qnp7smhlxwr41` (`sucursal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `promocion`
+--
+
+INSERT INTO `promocion` (`id`, `baja`, `denominacion`, `descripcion_descuento`, `fecha_desde`, `fecha_hasta`, `hora_desde`, `hora_hasta`, `precio_promocional`, `tipo_promocion`, `sucursal_id`) VALUES
+(1, b'0', 'Promocion 1', '2 pizzas clasicas mas una especial', '2024-09-01', '2024-09-30', '20:00:00.000000', '23:00:00.000000', 2000, 1, 1),
+(2, b'0', 'Promocion 1', '2 pizzas clasicas mas una especial', '2024-09-01', '2024-09-30', '20:00:00.000000', '23:00:00.000000', 2000, 1, 2),
+(3, b'0', 'Promocion 2', '2 hamburguesas monster + papas a caballo + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 2400, 1, 1),
+(4, b'0', 'Promocion 2', '2 hamburguesas monster + papas a caballo + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 2400, 1, 2),
+(5, b'0', 'Promocion 3', 'Lomo Completo + papas clasicas', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1200, 1, 1),
+(6, b'0', 'Promocion 3', 'Lomo Completo + papas clasicas', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1200, 1, 2),
+(7, b'0', 'Promocion 4', '2 Panchos con poncho + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1500, 1, 1),
+(8, b'0', 'Promocion 4', '2 Panchos con poncho + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1500, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -2472,6 +2520,20 @@ CREATE TABLE IF NOT EXISTS `promocion_aud` (
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `promocion_aud`
+--
+
+INSERT INTO `promocion_aud` (`id`, `rev`, `revtype`, `denominacion`, `descripcion_descuento`, `fecha_desde`, `fecha_hasta`, `hora_desde`, `hora_hasta`, `precio_promocional`, `tipo_promocion`) VALUES
+(1, 1002, 0, 'Promocion 1', '2 pizzas clasicas mas una especial', '2024-09-01', '2024-09-30', '20:00:00.000000', '23:00:00.000000', 2000, 1),
+(2, 1003, 0, 'Promocion 1', '2 pizzas clasicas mas una especial', '2024-09-01', '2024-09-30', '20:00:00.000000', '23:00:00.000000', 2000, 1),
+(3, 1004, 0, 'Promocion 2', '2 hamburguesas monster + papas a caballo + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 2000, 1),
+(4, 1005, 0, 'Promocion 2', '2 hamburguesas monster + papas a caballo + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 2000, 1),
+(5, 1006, 0, 'Promocion 3', 'Lomo Completo + papas clasicas', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1200, 1),
+(6, 1007, 0, 'Promocion 3', 'Lomo Completo + papas clasicas', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1200, 1),
+(7, 1008, 0, 'Promocion 4', '2 Panchos con poncho + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1200, 1),
+(8, 1009, 0, 'Promocion 4', '2 Panchos con poncho + coca 1.25L', '2024-09-01', '2025-09-30', '19:00:00.000000', '01:59:00.000000', 1500, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2488,7 +2550,31 @@ CREATE TABLE IF NOT EXISTS `promocion_detalle` (
   PRIMARY KEY (`id`),
   KEY `FK2dthinvgi20qc529cvkab7nt2` (`articulo_id`),
   KEY `FKmxkc9fkv4btuhc89yu338obqd` (`promocion_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `promocion_detalle`
+--
+
+INSERT INTO `promocion_detalle` (`id`, `baja`, `cantidad`, `articulo_id`, `promocion_id`) VALUES
+(1, b'0', 1, 109, 1),
+(2, b'0', 2, 108, 1),
+(3, b'0', 2, 107, 2),
+(4, b'0', 1, 110, 2),
+(5, b'0', 1, 116, 3),
+(6, b'0', 2, 92, 3),
+(7, b'0', 1, 113, 3),
+(8, b'0', 1, 115, 4),
+(9, b'0', 2, 91, 4),
+(10, b'0', 1, 114, 4),
+(11, b'0', 1, 112, 5),
+(12, b'0', 1, 97, 5),
+(13, b'0', 1, 98, 6),
+(14, b'0', 1, 111, 6),
+(15, b'0', 2, 130, 7),
+(16, b'0', 1, 116, 7),
+(17, b'0', 2, 129, 8),
+(18, b'0', 1, 115, 8);
 
 -- --------------------------------------------------------
 
@@ -2504,6 +2590,30 @@ CREATE TABLE IF NOT EXISTS `promocion_detalle_aud` (
   `cantidad` int DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `promocion_detalle_aud`
+--
+
+INSERT INTO `promocion_detalle_aud` (`id`, `rev`, `revtype`, `cantidad`) VALUES
+(1, 1002, 0, 1),
+(2, 1002, 0, 2),
+(3, 1003, 0, 2),
+(4, 1003, 0, 1),
+(5, 1004, 0, 1),
+(6, 1004, 0, 2),
+(7, 1004, 0, 1),
+(8, 1005, 0, 1),
+(9, 1005, 0, 2),
+(10, 1005, 0, 1),
+(11, 1006, 0, 1),
+(12, 1006, 0, 1),
+(13, 1007, 0, 1),
+(14, 1007, 0, 1),
+(15, 1008, 0, 2),
+(16, 1008, 0, 1),
+(17, 1009, 0, 2),
+(18, 1009, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2649,7 +2759,20 @@ INSERT INTO `revision_info` (`id`, `revision_date`) VALUES
 (963, '2024-09-08 18:23:49.591000'),
 (964, '2024-09-08 18:28:44.740000'),
 (965, '2024-09-08 18:29:44.213000'),
-(966, '2024-09-08 18:31:23.724000');
+(966, '2024-09-08 18:31:23.724000'),
+(1002, '2024-09-15 14:51:30.499000'),
+(1003, '2024-09-15 14:53:11.376000'),
+(1004, '2024-09-15 16:01:49.396000'),
+(1005, '2024-09-15 16:02:30.557000'),
+(1006, '2024-09-15 16:07:43.407000'),
+(1007, '2024-09-15 16:08:10.599000'),
+(1008, '2024-09-15 16:09:32.026000'),
+(1009, '2024-09-15 16:10:21.810000'),
+(1052, '2024-09-15 17:07:58.165000'),
+(1053, '2024-09-15 17:16:40.275000'),
+(1054, '2024-09-15 17:18:18.530000'),
+(1102, '2024-09-15 17:34:25.059000'),
+(1103, '2024-09-15 17:34:25.129000');
 
 -- --------------------------------------------------------
 
@@ -2667,7 +2790,7 @@ CREATE TABLE IF NOT EXISTS `revision_info_seq` (
 --
 
 INSERT INTO `revision_info_seq` (`next_val`) VALUES
-(1051);
+(1201);
 
 -- --------------------------------------------------------
 
@@ -2911,7 +3034,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `rol` tinyint DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `baja`, `auth0id`, `email`, `rol`, `username`) VALUES
+(1, b'0', 'auth0|1234567890', 'johndoe@example.com', 2, 'johndoe'),
+(2, b'0', 'auth0|1', 'snoopy@example.com', 2, 'Charly Brown'),
+(3, b'0', 'auth0|21', 'pokemon@example.com', 2, 'Ash Ketchup'),
+(4, b'0', NULL, 'juan.perez@example.com', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2930,6 +3063,16 @@ CREATE TABLE IF NOT EXISTS `usuario_aud` (
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `usuario_aud`
+--
+
+INSERT INTO `usuario_aud` (`id`, `rev`, `revtype`, `auth0id`, `email`, `rol`, `username`) VALUES
+(1, 1052, 0, 'auth0|1234567890', 'johndoe@example.com', 2, 'johndoe'),
+(2, 1053, 0, 'auth0|1', 'snoopy@example.com', 2, 'Charly Brown'),
+(3, 1054, 0, 'auth0|21', 'pokemon@example.com', 2, 'Ash Ketchup'),
+(4, 1102, 0, NULL, 'juan.perez@example.com', NULL, NULL);
 
 --
 -- Restricciones para tablas volcadas

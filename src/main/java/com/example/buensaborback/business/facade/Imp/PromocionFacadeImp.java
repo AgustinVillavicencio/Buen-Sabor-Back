@@ -6,6 +6,7 @@ import com.example.buensaborback.business.facade.PromocionFacade;
 import com.example.buensaborback.business.mapper.BaseMapper;
 import com.example.buensaborback.business.mapper.PromocionMapper;
 import com.example.buensaborback.business.mapper.SucursalMapper;
+import com.example.buensaborback.business.service.ArticuloInsumoService;
 import com.example.buensaborback.business.service.Base.BaseService;
 import com.example.buensaborback.business.service.PromocionService;
 import com.example.buensaborback.domain.dto.ArticuloInsumoDtos.ArticuloInsumoDto;
@@ -14,6 +15,8 @@ import com.example.buensaborback.domain.dto.ArticuloManufacturado.ArticuloManufa
 import com.example.buensaborback.domain.dto.PromocionDtos.PromocionDto;
 import com.example.buensaborback.domain.dto.SucursalDtos.SucursalShortDto;
 import com.example.buensaborback.domain.entities.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -36,19 +39,36 @@ public class PromocionFacadeImp extends BaseFacadeImp<Promocion, PromocionDto,Pr
     @Autowired
     PromocionMapper promocionMapper;
 
+    private static final Logger logger = LoggerFactory.getLogger(PromocionService.class);
+
     public PromocionFacadeImp(BaseService<Promocion, Long> baseService, BaseMapper<Promocion, PromocionDto, PromocionDto> baseMapper) {
         super(baseService, baseMapper);
     }
 
     public List<PromocionDto> createConSucursales(PromocionDto request) {
+        // Log inicial de la solicitud
+        logger.info("Iniciando la creación de promoción con la solicitud: {}", request);
+
         Set<SucursalShortDto> sucursalesDto = request.getSucursales();
+        logger.info("Sucursales recibidas del DTO: {}", sucursalesDto);
+
         Set<Sucursal> sucursales = sucursalMapper.toEntitiesShort(sucursalesDto);
+        logger.info("Sucursales mapeadas a entidades: {}", sucursales);
+
         Promocion entityToCreate = baseMapper.toEntity(request);
+        logger.info("Entidad Promocion mapeada desde el DTO: {}", entityToCreate);
+
         // Graba una entidad
         var entityCreated = promocionService.create(entityToCreate, sucursales);
+        logger.info("Promoción creada con éxito: {}", entityCreated);
+
         // convierte a Dto para devolver
-        return baseMapper.toDTOsList(entityCreated);
+        List<PromocionDto> responseDtos = baseMapper.toDTOsList(entityCreated);
+        logger.info("Promoción convertida a DTO para la respuesta: {}", responseDtos);
+
+        return responseDtos;
     }
+
 
     public List<PromocionDto> duplicateInOtherSucursales(Long id, Set<SucursalShortDto> sucursales) {
         // Graba una entidad
