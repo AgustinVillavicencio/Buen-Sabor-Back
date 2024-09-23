@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-09-2024 a las 17:39:17
+-- Tiempo de generación: 23-09-2024 a las 22:24:22
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -1411,9 +1411,7 @@ DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE IF NOT EXISTS `empleado` (
   `id` bigint NOT NULL,
   `sucursal_id` bigint DEFAULT NULL,
-  `usuario_empleado_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_f2mjsug9ttwgbw9o4qwun93it` (`usuario_empleado_id`),
   KEY `FKkv68lx8xpbpv6jprh7taieaej` (`sucursal_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -1421,8 +1419,29 @@ CREATE TABLE IF NOT EXISTS `empleado` (
 -- Volcado de datos para la tabla `empleado`
 --
 
-INSERT INTO `empleado` (`id`, `sucursal_id`, `usuario_empleado_id`) VALUES
-(1, 1, NULL);
+INSERT INTO `empleado` (`id`, `sucursal_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(9, 1),
+(10, 1),
+(13, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(6, 2),
+(7, 2),
+(8, 2),
+(11, 2),
+(12, 2),
+(14, 2),
+(15, 2),
+(20, 2),
+(21, 2),
+(22, 2);
 
 -- --------------------------------------------------------
 
@@ -1443,7 +1462,28 @@ CREATE TABLE IF NOT EXISTS `empleado_aud` (
 --
 
 INSERT INTO `empleado_aud` (`id`, `rev`, `sucursal_id`) VALUES
-(1, 1103, 1);
+(1, 1103, 1),
+(2, 1153, 1),
+(3, 1155, 1),
+(4, 1157, 1),
+(5, 1159, 1),
+(6, 1161, 1),
+(7, 1163, 2),
+(8, 1165, 2),
+(9, 1167, 1),
+(10, 1169, 1),
+(11, 1171, 2),
+(12, 1173, 2),
+(13, 1175, 1),
+(14, 1177, 2),
+(15, 1179, 2),
+(16, 1181, 1),
+(17, 1183, 1),
+(18, 1203, 1),
+(19, 1205, 1),
+(20, 1207, 2),
+(21, 1209, 2),
+(22, 1211, 2);
 
 -- --------------------------------------------------------
 
@@ -1708,7 +1748,33 @@ CREATE TABLE IF NOT EXISTS `imagen_persona` (
   `name` varchar(255) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `imagen_persona`
+--
+
+INSERT INTO `imagen_persona` (`id`, `baja`, `name`, `url`) VALUES
+(1, b'0', 'persona1.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/buu76uossx6rktlrrbyn'),
+(2, b'0', 'persona2.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/drpxkberytnrohsvdtnb'),
+(3, b'0', 'persona3.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/u43b9mumveebvnob6tkl'),
+(4, b'0', 'persona4.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/h4ytj8xlvxk5mkpes7hn'),
+(5, b'0', 'persona5.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/s0rdtkv8zunthccqr5nf'),
+(6, b'0', 'persona1.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/ach1lgog5q6niimcxuei'),
+(7, b'0', 'persona1.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/pvmykbjt45xcaupnpo3i'),
+(8, b'0', 'persona1.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/iojvrhofzq3i6npjmxnl'),
+(9, b'0', 'persona1.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/jpzyeabg4wgw8ue07pal'),
+(10, b'0', 'persona2.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/jv01n4kehfvmmujctz5w'),
+(11, b'0', 'persona2.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/xqoh0p1mz1wtudvy7qvp'),
+(12, b'0', 'persona2.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/sclszuspyxmdypxrygpq'),
+(13, b'0', 'persona3.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/oc4dg5absiijlu69hvw0'),
+(14, b'0', 'persona3.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/uyyd5mxupxpabzckrkoc'),
+(15, b'0', 'persona3.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/k83m4xl9banxmutzxtyf'),
+(16, b'0', 'persona4.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/l08ixl76orh6rp2frerv'),
+(17, b'0', 'persona4.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/bcngnys99pa8xtdovv3v'),
+(18, b'0', 'persona4.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/vqenvn8n0ardvkwaxykf'),
+(19, b'0', 'persona5.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/ot66n0hicxkykuf7mxhq'),
+(20, b'0', 'persona5.jpg', 'https://res.cloudinary.com/dtxgrqsqq/image/upload/att5lgff1n1rozdde9xc');
 
 -- --------------------------------------------------------
 
@@ -2427,14 +2493,35 @@ CREATE TABLE IF NOT EXISTS `persona` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_aef1ew8mf4bdu32jdjk0gv69q` (`imagen_persona_id`),
   UNIQUE KEY `UK_nefbl9obym4qiqpf6cd4bb2dj` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`id`, `baja`, `apellido`, `fecha_nacimiento`, `nombre`, `telefono`, `imagen_persona_id`, `usuario_id`) VALUES
-(1, b'0', 'Perez', '1990-01-01', 'Juan', '123456789', NULL, 4);
+(1, b'1', 'Perez', '1990-01-01', 'Juan', '123456789', NULL, 4),
+(2, b'1', 'Perez', '1990-01-01', 'Juan', '123456789', NULL, 5),
+(3, b'0', 'Perez', '1990-01-01', 'Juan', '123456789', 1, 6),
+(4, b'0', 'Ketchup', '1991-10-09', 'Ash', '2615350001', 2, 7),
+(5, b'0', 'Thompson', '1992-04-20', 'Felipe', '2615351111', 3, 8),
+(6, b'0', 'Giordano', '1995-10-21', 'Alan', '2616854211', 4, 9),
+(7, b'0', 'Ortiz', '1996-11-15', 'Hernan', '2613548651', 5, 10),
+(8, b'0', 'Ortega', '1990-09-12', 'Lucas', '261987654', 6, 11),
+(9, b'0', 'Bullaude', '1992-05-28', 'Pablo', '2617531248', 7, 12),
+(10, b'0', 'Ramos', '1997-03-01', 'Santiago', '261965523', 10, 13),
+(11, b'0', 'Martinez', '1992-02-02', 'Emiliano', '261454545', 13, 14),
+(12, b'0', 'Vergara', '1999-01-30', 'Gabriel', '261852014', 16, 15),
+(13, b'0', 'Fernandez', '1998-05-22', 'Ignacio', '261124654', 19, 16),
+(14, b'0', 'Tobares', '1989-07-12', 'Bruno', '261124242', 8, 17),
+(15, b'0', 'Fredes', '1999-12-31', 'Agustin', '261753215', 11, 18),
+(16, b'0', 'Villavicencio', '1993-12-19', 'Agustin', '2615350637', 14, 19),
+(17, b'0', 'Palleres', '1988-04-04', 'Claudio', '261451245', 17, 20),
+(18, b'0', 'Badiali', '1990-10-22', 'Jorge', '2618525444', 20, 21),
+(19, b'0', 'Mendez', '2002-04-27', 'Julio', '2614989854', 9, 22),
+(20, b'0', 'Ochoa', '2001-02-14', 'Samuel', '2617520520', 12, 23),
+(21, b'0', 'Olivera', '2000-07-14', 'Rodrigo', '2611121131', 15, 24),
+(22, b'0', 'Olivera', '1996-09-17', 'Matias', '2618689689', 18, 25);
 
 -- --------------------------------------------------------
 
@@ -2459,7 +2546,28 @@ CREATE TABLE IF NOT EXISTS `persona_aud` (
 --
 
 INSERT INTO `persona_aud` (`id`, `rev`, `revtype`, `apellido`, `fecha_nacimiento`, `nombre`, `telefono`) VALUES
-(1, 1103, 0, 'Perez', '1990-01-01', 'Juan', '123456789');
+(1, 1103, 0, 'Perez', '1990-01-01', 'Juan', '123456789'),
+(2, 1153, 0, 'Perez', '1990-01-01', 'Juan', '123456789'),
+(3, 1155, 0, 'Perez', '1990-01-01', 'Juan', '123456789'),
+(4, 1157, 0, 'Ketchup', '1991-10-09', 'Ash', '2615350001'),
+(5, 1159, 0, 'Thompson', '1992-04-20', 'Felipe', '2615351111'),
+(6, 1161, 0, 'Giordano', '1995-10-21', 'Alan', '2616854211'),
+(7, 1163, 0, 'Ortiz', '1996-11-15', 'Hernan', '2613548651'),
+(8, 1165, 0, 'Ortega', '1990-09-12', 'Lucas', '261987654'),
+(9, 1167, 0, 'Bullaude', '1992-05-28', 'Pablo', '2617531248'),
+(10, 1169, 0, 'Ramos', '1997-03-01', 'Santiago', '261965523'),
+(11, 1171, 0, 'Martinez', '1992-02-02', 'Emiliano', '261454545'),
+(12, 1173, 0, 'Vergara', '1999-01-30', 'Gabriel', '261852014'),
+(13, 1175, 0, 'Fernandez', '1998-05-22', 'Ignacio', '261124654'),
+(14, 1177, 0, 'Tobares', '1989-07-12', 'Bruno', '261124242'),
+(15, 1179, 0, 'Fredes', '1999-12-31', 'Agustin', '261753215'),
+(16, 1181, 0, 'Villavicencio', '1993-12-19', 'Agustin', '2615350637'),
+(17, 1183, 0, 'Palleres', '1988-04-04', 'Claudio', '261451245'),
+(18, 1203, 0, 'Badiali', '1990-10-22', '88Jorge', '261451245'),
+(19, 1205, 0, 'Mendez', '2002-04-27', 'Julio', '2614989854'),
+(20, 1207, 0, 'Ochoa', '2001-02-14', 'Samuel', '2617520520'),
+(21, 1209, 0, 'Olivera', '2000-07-14', 'Rodrigo', '2611121131'),
+(22, 1211, 0, 'Olivera', '1996-09-17', 'Matias', '2618689689');
 
 -- --------------------------------------------------------
 
@@ -2772,7 +2880,49 @@ INSERT INTO `revision_info` (`id`, `revision_date`) VALUES
 (1053, '2024-09-15 17:16:40.275000'),
 (1054, '2024-09-15 17:18:18.530000'),
 (1102, '2024-09-15 17:34:25.059000'),
-(1103, '2024-09-15 17:34:25.129000');
+(1103, '2024-09-15 17:34:25.129000'),
+(1152, '2024-09-22 18:03:58.147000'),
+(1153, '2024-09-22 18:03:58.305000'),
+(1154, '2024-09-22 18:04:55.363000'),
+(1155, '2024-09-22 18:04:55.376000'),
+(1156, '2024-09-22 18:20:12.821000'),
+(1157, '2024-09-22 18:20:12.864000'),
+(1158, '2024-09-22 18:21:56.768000'),
+(1159, '2024-09-22 18:21:56.786000'),
+(1160, '2024-09-22 18:23:13.272000'),
+(1161, '2024-09-22 18:23:13.307000'),
+(1162, '2024-09-22 18:24:25.570000'),
+(1163, '2024-09-22 18:24:25.586000'),
+(1164, '2024-09-22 18:25:18.223000'),
+(1165, '2024-09-22 18:25:18.243000'),
+(1166, '2024-09-22 18:30:45.402000'),
+(1167, '2024-09-22 18:30:45.417000'),
+(1168, '2024-09-22 18:31:42.955000'),
+(1169, '2024-09-22 18:31:42.968000'),
+(1170, '2024-09-22 18:33:51.341000'),
+(1171, '2024-09-22 18:33:51.388000'),
+(1172, '2024-09-22 18:34:46.991000'),
+(1173, '2024-09-22 18:34:47.006000'),
+(1174, '2024-09-22 18:36:36.485000'),
+(1175, '2024-09-22 18:36:36.497000'),
+(1176, '2024-09-22 18:37:49.486000'),
+(1177, '2024-09-22 18:37:49.505000'),
+(1178, '2024-09-22 18:39:37.418000'),
+(1179, '2024-09-22 18:39:37.438000'),
+(1180, '2024-09-22 18:40:26.105000'),
+(1181, '2024-09-22 18:40:26.123000'),
+(1182, '2024-09-22 18:41:59.506000'),
+(1183, '2024-09-22 18:41:59.516000'),
+(1202, '2024-09-23 18:44:16.021000'),
+(1203, '2024-09-23 18:44:16.113000'),
+(1204, '2024-09-23 18:47:20.693000'),
+(1205, '2024-09-23 18:47:20.712000'),
+(1206, '2024-09-23 18:48:34.466000'),
+(1207, '2024-09-23 18:48:34.484000'),
+(1208, '2024-09-23 18:50:01.357000'),
+(1209, '2024-09-23 18:50:01.374000'),
+(1210, '2024-09-23 18:51:04.577000'),
+(1211, '2024-09-23 18:51:04.601000');
 
 -- --------------------------------------------------------
 
@@ -2790,7 +2940,7 @@ CREATE TABLE IF NOT EXISTS `revision_info_seq` (
 --
 
 INSERT INTO `revision_info_seq` (`next_val`) VALUES
-(1201);
+(1301);
 
 -- --------------------------------------------------------
 
@@ -3034,17 +3184,35 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `rol` tinyint DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `baja`, `auth0id`, `email`, `rol`, `username`) VALUES
-(1, b'0', 'auth0|1234567890', 'johndoe@example.com', 2, 'johndoe'),
-(2, b'0', 'auth0|1', 'snoopy@example.com', 2, 'Charly Brown'),
-(3, b'0', 'auth0|21', 'pokemon@example.com', 2, 'Ash Ketchup'),
-(4, b'0', NULL, 'juan.perez@example.com', NULL, NULL);
+(4, b'1', NULL, 'juan.perez@example.com', NULL, NULL),
+(5, b'1', '123456', 'juan.perezzz@example.com', 3, NULL),
+(6, b'0', '123456', 'juan.perezzzz@example.com', 3, 'JuanchoPerez'),
+(7, b'0', '165653', 'pokemon@example.com', 3, 'El mayonesas'),
+(8, b'0', '167161', 'senior.thompson@example.com', 3, 'senior-thompson'),
+(9, b'0', '138654', 'alan.giordano@example.com', 3, 'alan.giordano'),
+(10, b'0', '125645', 'hernan.ortiz@example.com', 3, 'hernan.ortiz'),
+(11, b'0', '985432', 'lucas.ortega@example.com', 3, 'lucas.ortega'),
+(12, b'0', '546213', 'pablito@example.com', 4, 'pablito'),
+(13, b'0', '546213', 'santicrack@example.com', 4, 'santicrack'),
+(14, b'0', '584848', 'emipingu@example.com', 4, 'emipingu'),
+(15, b'0', '124578', 'gabigol@example.com', 4, 'gabigol'),
+(16, b'0', '636323', 'nachofer@example.com', 1, 'nachofer'),
+(17, b'0', '636666', 'bruno.toba@example.com', 1, 'bruno.toba'),
+(18, b'0', '489513', 'agustin.fredes@example.com', 0, 'agustin.fredes'),
+(19, b'0', '123321', 'aguvilla@example.com', 0, 'aguvilla'),
+(20, b'0', '685858', 'claupa@example.com', 5, 'claupa'),
+(21, b'0', '884525', 'jorgeee@example.com', 5, 'jorgitoBadi'),
+(22, b'0', '741236', 'julio.capo@example.com', 5, 'capoleti'),
+(23, b'0', '464652', 'samu.fer@example.com', 5, 'Padelero22'),
+(24, b'0', '111421', 'rodri.oli@example.com', 5, 'rodriFlex'),
+(25, b'0', '323343', 'mati.oli@example.com', 5, 'matiFlex');
 
 -- --------------------------------------------------------
 
@@ -3072,7 +3240,28 @@ INSERT INTO `usuario_aud` (`id`, `rev`, `revtype`, `auth0id`, `email`, `rol`, `u
 (1, 1052, 0, 'auth0|1234567890', 'johndoe@example.com', 2, 'johndoe'),
 (2, 1053, 0, 'auth0|1', 'snoopy@example.com', 2, 'Charly Brown'),
 (3, 1054, 0, 'auth0|21', 'pokemon@example.com', 2, 'Ash Ketchup'),
-(4, 1102, 0, NULL, 'juan.perez@example.com', NULL, NULL);
+(4, 1102, 0, NULL, 'juan.perez@example.com', NULL, NULL),
+(5, 1152, 0, '123456', 'juan.perezzz@example.com', 3, NULL),
+(6, 1154, 0, '123456', 'juan.perezzzz@example.com', 3, 'JuanchoPerez'),
+(7, 1156, 0, '165653', 'pokemon@example.com', 3, 'El mayonesas'),
+(8, 1158, 0, '167161', 'senior.thompson@example.com', 3, 'senior-thompson'),
+(9, 1160, 0, '138654', 'alan.giordano@example.com', 3, 'alan.giordano'),
+(10, 1162, 0, '138654', 'hernan.ortiz@example.com', 3, 'hernan.ortiz'),
+(11, 1164, 0, '138654', 'lucas.ortega@example.com', 3, 'lucas.ortega'),
+(12, 1166, 0, '546213', 'pablito@example.com', 3, 'pablito'),
+(13, 1168, 0, '546213', 'santicrack@example.com', 4, 'santicrack'),
+(14, 1170, 0, '584848', 'emipingu@example.com', 4, 'emipingu'),
+(15, 1172, 0, '124578', 'gabigol@example.com', 4, 'gabigol'),
+(16, 1174, 0, '636323', 'nachofer@example.com', 1, 'nachofer'),
+(17, 1176, 0, '636323', 'bruno.toba@example.com', 1, 'bruno.toba'),
+(18, 1178, 0, '489513', 'agustin.fredes@example.com', 0, 'agustin.fredes'),
+(19, 1180, 0, '123321', 'aguvilla@example.com', 0, 'aguvilla'),
+(20, 1182, 0, '685858', 'claupa@example.com', 5, 'claupa'),
+(21, 1202, 0, '884525', 'jorgeee@example.com', 5, 'jorgitoBadi'),
+(22, 1204, 0, '741236', 'julio.capo@example.com', 5, 'capoleti'),
+(23, 1206, 0, '464652', 'samu.fer@example.com', 5, 'Padelero22'),
+(24, 1208, 0, '111421', 'rodri.oli@example.com', 5, 'rodriFlex'),
+(25, 1210, 0, '323343', 'mati.oli@example.com', 5, 'matiFlex');
 
 --
 -- Restricciones para tablas volcadas
