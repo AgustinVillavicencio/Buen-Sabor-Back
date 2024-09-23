@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-09-2024 a las 22:24:22
+-- Tiempo de generación: 23-09-2024 a las 23:00:03
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -1197,19 +1197,21 @@ INSERT INTO `categoria_seq` (`next_val`) VALUES
 DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id` bigint NOT NULL,
-  `apellido` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `telefono` varchar(255) DEFAULT NULL,
   `tipo_cliente` tinyint DEFAULT NULL,
   `imagen_cliente_id` bigint DEFAULT NULL,
-  `usuario_id` bigint DEFAULT NULL,
   `clave` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_cxt0yqevxn9ungm4i57sb9ojj` (`imagen_cliente_id`),
-  UNIQUE KEY `UK_id7jmosqg8hkqiqw4vf50xipm` (`usuario_id`)
+  UNIQUE KEY `UK_cxt0yqevxn9ungm4i57sb9ojj` (`imagen_cliente_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `tipo_cliente`, `imagen_cliente_id`, `clave`) VALUES
+(23, NULL, NULL, 'VD725X84531IM0HtVvR00mHjGjKDKxVB6PeqlchpQrQ='),
+(24, NULL, NULL, 'RbNv9bBCUj2QRXa88Qkbk8lO6/VSp7a6bGJ+NdxnbOI='),
+(25, NULL, NULL, '73WMJdR7Bo5DD0/C6aCI8YrfvtEtbWPBCLvhCH3/mzA=');
 
 -- --------------------------------------------------------
 
@@ -1224,6 +1226,15 @@ CREATE TABLE IF NOT EXISTS `cliente_aud` (
   `clave` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `cliente_aud`
+--
+
+INSERT INTO `cliente_aud` (`id`, `rev`, `clave`) VALUES
+(23, 1253, 'VD725X84531IM0HtVvR00mHjGjKDKxVB6PeqlchpQrQ='),
+(24, 1255, 'RbNv9bBCUj2QRXa88Qkbk8lO6/VSp7a6bGJ+NdxnbOI='),
+(25, 1257, '73WMJdR7Bo5DD0/C6aCI8YrfvtEtbWPBCLvhCH3/mzA=');
 
 -- --------------------------------------------------------
 
@@ -2493,7 +2504,7 @@ CREATE TABLE IF NOT EXISTS `persona` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_aef1ew8mf4bdu32jdjk0gv69q` (`imagen_persona_id`),
   UNIQUE KEY `UK_nefbl9obym4qiqpf6cd4bb2dj` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `persona`
@@ -2521,7 +2532,10 @@ INSERT INTO `persona` (`id`, `baja`, `apellido`, `fecha_nacimiento`, `nombre`, `
 (19, b'0', 'Mendez', '2002-04-27', 'Julio', '2614989854', 9, 22),
 (20, b'0', 'Ochoa', '2001-02-14', 'Samuel', '2617520520', 12, 23),
 (21, b'0', 'Olivera', '2000-07-14', 'Rodrigo', '2611121131', 15, 24),
-(22, b'0', 'Olivera', '1996-09-17', 'Matias', '2618689689', 18, 25);
+(22, b'0', 'Olivera', '1996-09-17', 'Matias', '2618689689', 18, 25),
+(23, b'0', 'Salgado', '1990-05-20', 'George', '2617846665', NULL, 26),
+(24, b'0', 'Villalobos', '1987-09-09', 'Maximo', '2611121111', NULL, 27),
+(25, b'0', 'Villaruel', '1997-12-09', 'Victoria', '2614448585', NULL, 28);
 
 -- --------------------------------------------------------
 
@@ -2567,7 +2581,10 @@ INSERT INTO `persona_aud` (`id`, `rev`, `revtype`, `apellido`, `fecha_nacimiento
 (19, 1205, 0, 'Mendez', '2002-04-27', 'Julio', '2614989854'),
 (20, 1207, 0, 'Ochoa', '2001-02-14', 'Samuel', '2617520520'),
 (21, 1209, 0, 'Olivera', '2000-07-14', 'Rodrigo', '2611121131'),
-(22, 1211, 0, 'Olivera', '1996-09-17', 'Matias', '2618689689');
+(22, 1211, 0, 'Olivera', '1996-09-17', 'Matias', '2618689689'),
+(23, 1253, 0, 'Salgado', '1990-05-20', 'George', '2617846665'),
+(24, 1255, 0, 'Villalobos', '1987-09-09', 'Maximo', '2611121111'),
+(25, 1257, 0, 'Villaruel', '1997-12-09', 'Victoria', '2614448585');
 
 -- --------------------------------------------------------
 
@@ -2922,7 +2939,13 @@ INSERT INTO `revision_info` (`id`, `revision_date`) VALUES
 (1208, '2024-09-23 18:50:01.357000'),
 (1209, '2024-09-23 18:50:01.374000'),
 (1210, '2024-09-23 18:51:04.577000'),
-(1211, '2024-09-23 18:51:04.601000');
+(1211, '2024-09-23 18:51:04.601000'),
+(1252, '2024-09-23 19:45:47.991000'),
+(1253, '2024-09-23 19:45:48.068000'),
+(1254, '2024-09-23 19:49:52.430000'),
+(1255, '2024-09-23 19:49:52.453000'),
+(1256, '2024-09-23 19:51:06.887000'),
+(1257, '2024-09-23 19:51:06.909000');
 
 -- --------------------------------------------------------
 
@@ -2940,7 +2963,7 @@ CREATE TABLE IF NOT EXISTS `revision_info_seq` (
 --
 
 INSERT INTO `revision_info_seq` (`next_val`) VALUES
-(1301);
+(1351);
 
 -- --------------------------------------------------------
 
@@ -3184,7 +3207,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `rol` tinyint DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -3212,7 +3235,10 @@ INSERT INTO `usuario` (`id`, `baja`, `auth0id`, `email`, `rol`, `username`) VALU
 (22, b'0', '741236', 'julio.capo@example.com', 5, 'capoleti'),
 (23, b'0', '464652', 'samu.fer@example.com', 5, 'Padelero22'),
 (24, b'0', '111421', 'rodri.oli@example.com', 5, 'rodriFlex'),
-(25, b'0', '323343', 'mati.oli@example.com', 5, 'matiFlex');
+(25, b'0', '323343', 'mati.oli@example.com', 5, 'matiFlex'),
+(26, b'0', NULL, 'giorgio@example.com', 2, 'georgeDeLaSelva'),
+(27, b'0', NULL, 'maxim.villa@example.com', 2, 'pinguMax'),
+(28, b'0', NULL, 'victoria.villa@example.com', 2, 'vickytoria');
 
 -- --------------------------------------------------------
 
@@ -3261,7 +3287,10 @@ INSERT INTO `usuario_aud` (`id`, `rev`, `revtype`, `auth0id`, `email`, `rol`, `u
 (22, 1204, 0, '741236', 'julio.capo@example.com', 5, 'capoleti'),
 (23, 1206, 0, '464652', 'samu.fer@example.com', 5, 'Padelero22'),
 (24, 1208, 0, '111421', 'rodri.oli@example.com', 5, 'rodriFlex'),
-(25, 1210, 0, '323343', 'mati.oli@example.com', 5, 'matiFlex');
+(25, 1210, 0, '323343', 'mati.oli@example.com', 5, 'matiFlex'),
+(26, 1252, 0, NULL, 'giorgio@example.com', 2, 'georgeDeLaSelva'),
+(27, 1254, 0, NULL, 'maxim.villa@example.com', 2, 'pinguMax'),
+(28, 1256, 0, NULL, 'victoria.villa@example.com', 2, 'vickytoria');
 
 --
 -- Restricciones para tablas volcadas

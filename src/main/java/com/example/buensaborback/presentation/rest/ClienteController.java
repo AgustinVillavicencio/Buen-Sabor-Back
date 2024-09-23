@@ -32,6 +32,16 @@ public class ClienteController extends BaseControllerImp<Cliente, ClienteDto,Cli
         }
     }
 
+    @PostMapping("/create")
+    public ResponseEntity<?> createCliente(@RequestBody ClienteDto clienteDto) {
+        try {
+            return ResponseEntity.ok(facade.createNew(clienteDto));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+
     @DeleteMapping("/{clienteId}/removeDomicilio/{domicilioId}")
     public ResponseEntity<?> removeDomicilio(@PathVariable Long clienteId, @PathVariable Long domicilioId) throws Exception{
         try{
