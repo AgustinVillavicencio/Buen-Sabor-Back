@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-09-2024 a las 23:00:03
+-- Tiempo de generación: 05-10-2024 a las 22:30:40
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -290,7 +290,55 @@ INSERT INTO `articulo_aud` (`id`, `rev`, `revtype`, `denominacion`, `precio_vent
 (127, 965, 0, 'Pancho doble', 500),
 (128, 965, 0, 'Pancho doble', 500),
 (129, 966, 0, 'Pancho con poncho', 500),
-(130, 966, 0, 'Pancho con poncho', 500);
+(130, 966, 0, 'Pancho con poncho', 500),
+(54, 1302, 1, 'Papa', NULL),
+(81, 1302, 1, 'Sal', NULL),
+(83, 1302, 1, 'Aceite', NULL),
+(116, 1302, 1, 'Coca Cola 1.25L', 700),
+(54, 1303, 1, 'Papa', NULL),
+(81, 1303, 1, 'Sal', NULL),
+(83, 1303, 1, 'Aceite', NULL),
+(116, 1303, 1, 'Coca Cola 1.25L', 700),
+(44, 1352, 1, 'Mayonesa', NULL),
+(46, 1352, 1, 'Ketchup', NULL),
+(49, 1352, 1, 'Pan de Pancho', NULL),
+(51, 1352, 1, 'Salchicha', NULL),
+(52, 1352, 1, 'Queso', NULL),
+(58, 1352, 1, 'Salsa Golf', NULL),
+(71, 1352, 1, 'Jamon', NULL),
+(123, 1352, 1, 'Villavicencio 1L', 500),
+(44, 1402, 1, 'Mayonesa', NULL),
+(46, 1402, 1, 'Ketchup', NULL),
+(49, 1402, 1, 'Pan de Pancho', NULL),
+(51, 1402, 1, 'Salchicha', NULL),
+(52, 1402, 1, 'Queso', NULL),
+(58, 1402, 1, 'Salsa Golf', NULL),
+(71, 1402, 1, 'Jamon', NULL),
+(123, 1402, 1, 'Villavicencio 1L', 500),
+(44, 1452, 1, 'Mayonesa', NULL),
+(46, 1452, 1, 'Ketchup', NULL),
+(49, 1452, 1, 'Pan de Pancho', NULL),
+(51, 1452, 1, 'Salchicha', NULL),
+(52, 1452, 1, 'Queso', NULL),
+(58, 1452, 1, 'Salsa Golf', NULL),
+(71, 1452, 1, 'Jamon', NULL),
+(123, 1452, 1, 'Villavicencio 1L', 500),
+(44, 1453, 1, 'Mayonesa', NULL),
+(46, 1453, 1, 'Ketchup', NULL),
+(49, 1453, 1, 'Pan de Pancho', NULL),
+(51, 1453, 1, 'Salchicha', NULL),
+(52, 1453, 1, 'Queso', NULL),
+(58, 1453, 1, 'Salsa Golf', NULL),
+(71, 1453, 1, 'Jamon', NULL),
+(123, 1453, 1, 'Villavicencio 1L', 500),
+(44, 1502, 1, 'Mayonesa', NULL),
+(46, 1502, 1, 'Ketchup', NULL),
+(49, 1502, 1, 'Pan de Pancho', NULL),
+(51, 1502, 1, 'Salchicha', NULL),
+(52, 1502, 1, 'Queso', NULL),
+(58, 1502, 1, 'Salsa Golf', NULL),
+(71, 1502, 1, 'Jamon', NULL),
+(123, 1502, 1, 'Villavicencio 1L', 500);
 
 -- --------------------------------------------------------
 
@@ -354,21 +402,21 @@ INSERT INTO `articulo_insumo` (`id`, `es_para_elaborar`, `precio_compra`, `stock
 (41, b'1', 3, 600, 1000, 40),
 (42, b'1', 40, 90, 1000, 10),
 (43, b'1', 40, 90, 1000, 10),
-(44, b'1', 30, 900, 1000, 100),
+(44, b'1', 30, 897.5, 1000, 100),
 (45, b'1', 30, 900, 1000, 100),
-(46, b'1', 31, 800, 1000, 100),
+(46, b'1', 31, 797.5, 1000, 100),
 (47, b'1', 31, 800, 1000, 100),
 (48, b'1', 10, 100, 800, 40),
-(49, b'1', 10, 100, 800, 40),
+(49, b'1', 10, 95, 800, 40),
 (50, b'1', 8, 400, 500, 80),
-(51, b'1', 8, 400, 500, 80),
-(52, b'1', 15, 80, 600, 10),
+(51, b'1', 8, 390, 500, 80),
+(52, b'1', 15, 77.5, 600, 10),
 (53, b'1', 15, 80, 600, 10),
-(54, b'1', 9, 50, 200, 5),
+(54, b'1', 9, 44, 200, 5),
 (55, b'1', 9, 50, 200, 5),
 (56, b'1', 10, 64, 500, 10),
 (57, b'1', 10, 64, 500, 10),
-(58, b'1', 24, 90, 200, 5),
+(58, b'1', 24, 89.75000000000001, 200, 5),
 (59, b'1', 24, 90, 200, 5),
 (60, b'1', 50, 500, 2000, 10),
 (61, b'1', 50, 500, 2000, 10),
@@ -381,7 +429,7 @@ INSERT INTO `articulo_insumo` (`id`, `es_para_elaborar`, `precio_compra`, `stock
 (68, b'1', 20, 100, 200, 10),
 (69, b'1', 20, 100, 200, 10),
 (70, b'1', 15, 100, 300, 5),
-(71, b'1', 15, 100, 300, 5),
+(71, b'1', 15, 97.5, 300, 5),
 (72, b'1', 16, 50, 200, 5),
 (73, b'1', 16, 50, 200, 5),
 (74, b'1', 35, 30, 100, 1),
@@ -391,22 +439,22 @@ INSERT INTO `articulo_insumo` (`id`, `es_para_elaborar`, `precio_compra`, `stock
 (78, b'1', 9, 50, 100, 1),
 (79, b'1', 9, 50, 100, 1),
 (80, b'1', 10, 30, 100, 1),
-(81, b'1', 10, 30, 100, 1),
+(81, b'1', 10, 29.979999999999997, 100, 1),
 (82, b'1', 16, 20, 80, 1),
-(83, b'1', 16, 20, 80, 1),
+(83, b'1', 16, 19.6, 80, 1),
 (84, b'1', 6, 10, 50, 1),
 (85, b'1', 6, 10, 50, 1),
 (95, b'1', 100, 300, 1000, 10),
 (96, b'0', 100, 300, 1000, 10),
 (115, b'0', 6, 50, 50, 1),
-(116, b'0', 6, 50, 50, 1),
+(116, b'0', 6, 46, 50, 1),
 (117, b'0', 10, 20, 30, 1),
 (118, b'0', 10, 20, 30, 1),
 (119, b'0', 5, 20, 40, 1),
 (120, b'0', 5, 20, 40, 1),
 (121, b'0', 7, 20, 40, 1),
 (122, b'0', 7, 20, 40, 1),
-(123, b'0', 2, 15, 50, 1),
+(123, b'0', 2, 6, 50, 1),
 (124, b'0', 2, 15, 50, 1);
 
 -- --------------------------------------------------------
@@ -525,7 +573,55 @@ INSERT INTO `articulo_insumo_aud` (`id`, `rev`, `es_para_elaborar`, `precio_comp
 (121, 962, b'0', 7, 20, 40, 1),
 (122, 962, b'0', 7, 20, 40, 1),
 (123, 963, b'0', 2, 15, 50, 1),
-(124, 963, b'0', 2, 15, 50, 1);
+(124, 963, b'0', 2, 15, 50, 1),
+(54, 1302, b'1', 9, 47, 200, 5),
+(81, 1302, b'1', 10, 29.99, 100, 1),
+(83, 1302, b'1', 16, 19.8, 80, 1),
+(116, 1302, b'0', 6, 48, 50, 1),
+(54, 1303, b'1', 9, 44, 200, 5),
+(81, 1303, b'1', 10, 29.979999999999997, 100, 1),
+(83, 1303, b'1', 16, 19.6, 80, 1),
+(116, 1303, b'0', 6, 46, 50, 1),
+(44, 1352, b'1', 30, 899.5, 1000, 100),
+(46, 1352, b'1', 31, 799.5, 1000, 100),
+(49, 1352, b'1', 10, 99, 800, 40),
+(51, 1352, b'1', 8, 398, 500, 80),
+(52, 1352, b'1', 15, 79.5, 600, 10),
+(58, 1352, b'1', 24, 89.95, 200, 5),
+(71, 1352, b'1', 15, 99.5, 300, 5),
+(123, 1352, b'0', 2, 14, 50, 1),
+(44, 1402, b'1', 30, 899, 1000, 100),
+(46, 1402, b'1', 31, 799, 1000, 100),
+(49, 1402, b'1', 10, 98, 800, 40),
+(51, 1402, b'1', 8, 396, 500, 80),
+(52, 1402, b'1', 15, 79, 600, 10),
+(58, 1402, b'1', 24, 89.9, 200, 5),
+(71, 1402, b'1', 15, 99, 300, 5),
+(123, 1402, b'0', 2, 13, 50, 1),
+(44, 1452, b'1', 30, 898.5, 1000, 100),
+(46, 1452, b'1', 31, 798.5, 1000, 100),
+(49, 1452, b'1', 10, 97, 800, 40),
+(51, 1452, b'1', 8, 394, 500, 80),
+(52, 1452, b'1', 15, 78.5, 600, 10),
+(58, 1452, b'1', 24, 89.85000000000001, 200, 5),
+(71, 1452, b'1', 15, 98.5, 300, 5),
+(123, 1452, b'0', 2, 12, 50, 1),
+(44, 1453, b'1', 30, 898, 1000, 100),
+(46, 1453, b'1', 31, 798, 1000, 100),
+(49, 1453, b'1', 10, 96, 800, 40),
+(51, 1453, b'1', 8, 392, 500, 80),
+(52, 1453, b'1', 15, 78, 600, 10),
+(58, 1453, b'1', 24, 89.80000000000001, 200, 5),
+(71, 1453, b'1', 15, 98, 300, 5),
+(123, 1453, b'0', 2, 9, 50, 1),
+(44, 1502, b'1', 30, 897.5, 1000, 100),
+(46, 1502, b'1', 31, 797.5, 1000, 100),
+(49, 1502, b'1', 10, 95, 800, 40),
+(51, 1502, b'1', 8, 390, 500, 80),
+(52, 1502, b'1', 15, 77.5, 600, 10),
+(58, 1502, b'1', 24, 89.75000000000001, 200, 5),
+(71, 1502, b'1', 15, 97.5, 300, 5),
+(123, 1502, b'0', 2, 6, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -1250,6 +1346,16 @@ CREATE TABLE IF NOT EXISTS `cliente_domicilio` (
   KEY `FK7jkekc8ff2g28bthd4dd9d7r2` (`domicilio_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `cliente_domicilio`
+--
+
+INSERT INTO `cliente_domicilio` (`cliente_id`, `domicilio_id`) VALUES
+(23, 1),
+(23, 2),
+(24, 2),
+(25, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -1292,7 +1398,7 @@ INSERT INTO `cliente_seq` (`next_val`) VALUES
 
 DROP TABLE IF EXISTS `detalle_pedido`;
 CREATE TABLE IF NOT EXISTS `detalle_pedido` (
-  `id` bigint NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `cantidad` int DEFAULT NULL,
   `sub_total` double DEFAULT NULL,
   `articulo_id` bigint DEFAULT NULL,
@@ -1301,7 +1407,27 @@ CREATE TABLE IF NOT EXISTS `detalle_pedido` (
   PRIMARY KEY (`id`),
   KEY `FKgqvba9e7dildyw45u0usdj1k2` (`pedido_id`),
   KEY `FKblwfjfeyou4u7hae0gcngweeu` (`articulo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_pedido`
+--
+
+INSERT INTO `detalle_pedido` (`id`, `cantidad`, `sub_total`, `articulo_id`, `pedido_id`, `baja`) VALUES
+(1, 1, NULL, 112, 2, b'0'),
+(2, 2, NULL, 116, 2, b'0'),
+(3, 1, NULL, 112, 3, b'0'),
+(4, 2, NULL, 116, 3, b'0'),
+(5, 1, 72.7, 130, 23, b'0'),
+(6, 1, 2, 123, 23, b'0'),
+(7, 1, 2, 123, 24, b'0'),
+(8, 1, 72.7, 130, 24, b'0'),
+(9, 1, 2, 123, 25, b'0'),
+(10, 1, 72.7, 130, 25, b'0'),
+(11, 1, 72.7, 130, 26, b'0'),
+(12, 3, 6, 123, 26, b'0'),
+(13, 3, 6, 123, 27, b'0'),
+(14, 1, 72.7, 130, 27, b'0');
 
 -- --------------------------------------------------------
 
@@ -1318,6 +1444,26 @@ CREATE TABLE IF NOT EXISTS `detalle_pedido_aud` (
   `sub_total` double DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_pedido_aud`
+--
+
+INSERT INTO `detalle_pedido_aud` (`id`, `rev`, `revtype`, `cantidad`, `sub_total`) VALUES
+(1, 1302, 0, 1, NULL),
+(2, 1302, 0, 2, NULL),
+(3, 1303, 0, 1, NULL),
+(4, 1303, 0, 2, NULL),
+(5, 1352, 0, 1, 72.7),
+(6, 1352, 0, 1, 2),
+(7, 1402, 0, 1, 2),
+(8, 1402, 0, 1, 72.7),
+(9, 1452, 0, 1, 2),
+(10, 1452, 0, 1, 72.7),
+(11, 1453, 0, 1, 72.7),
+(12, 1453, 0, 3, 6),
+(13, 1502, 0, 3, 6),
+(14, 1502, 0, 1, 72.7);
 
 -- --------------------------------------------------------
 
@@ -2449,17 +2595,31 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `total` double DEFAULT NULL,
   `total_costo` double DEFAULT NULL,
   `cliente_id` bigint DEFAULT NULL,
-  `domicilio_id` bigint DEFAULT NULL,
   `empleado_id` bigint DEFAULT NULL,
   `factura_id` bigint DEFAULT NULL,
   `sucursal_id` bigint DEFAULT NULL,
+  `domicilio_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_g016pjgvtig2l5tbomjngwv0b` (`factura_id`),
   KEY `FK30s8j2ktpay6of18lbyqn3632` (`cliente_id`),
-  KEY `FKauqt5ljerhslue4scdu1qexb` (`domicilio_id`),
   KEY `FK1nibrtel55qwnf6rwabwsqkyi` (`empleado_id`),
-  KEY `FK3ks2hug06ddfndlg1rqw1xmr9` (`sucursal_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `FK3ks2hug06ddfndlg1rqw1xmr9` (`sucursal_id`),
+  KEY `FK_domicilio_id` (`domicilio_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`id`, `baja`, `estado`, `fecha_pedido`, `forma_pago`, `hora_estimada_finalizacion`, `tipo_envio`, `total`, `total_costo`, `cliente_id`, `empleado_id`, `factura_id`, `sucursal_id`, `domicilio_id`) VALUES
+(2, b'0', 1, '2024-09-29', NULL, '11:41:00.000000', 0, NULL, 42.3, 23, NULL, NULL, 1, NULL),
+(3, b'0', 1, '2024-09-29', 0, '11:50:00.000000', 0, NULL, 42.3, 23, NULL, NULL, 1, NULL),
+(22, b'0', 1, '2023-01-02', 0, '13:38:17.128000', 0, NULL, 42.33, 23, NULL, NULL, 1, 1),
+(23, b'0', 1, '2024-10-05', 0, '19:32:00.000000', 0, 74.7, 74.7, 25, NULL, NULL, 1, 2),
+(24, b'0', 1, '2024-10-05', 0, '19:39:00.000000', 0, 1000, 1000, 25, NULL, NULL, 1, 2),
+(25, b'0', 1, '2024-10-05', 0, '19:43:00.000000', 0, 1000, 74.7, 25, NULL, NULL, 1, 2),
+(26, b'0', 1, '2024-10-05', 0, '19:44:00.000000', 0, 1000, 78.7, 25, NULL, NULL, 1, 2),
+(27, b'0', 1, '2024-10-05', 0, '19:45:00.000000', 0, 2000, 78.7, 25, NULL, NULL, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -2484,6 +2644,19 @@ CREATE TABLE IF NOT EXISTS `pedido_aud` (
   `sucursal_id` bigint DEFAULT NULL,
   PRIMARY KEY (`rev`,`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_aud`
+--
+
+INSERT INTO `pedido_aud` (`id`, `rev`, `revtype`, `estado`, `fecha_pedido`, `forma_pago`, `hora_estimada_finalizacion`, `tipo_envio`, `total`, `total_costo`, `domicilio_id`, `factura_id`, `sucursal_id`) VALUES
+(2, 1302, 0, 1, '2024-09-29', NULL, '11:41:00.000000', 0, NULL, 42.3, 2, NULL, 1),
+(3, 1303, 0, 1, '2024-09-29', 0, '11:50:00.000000', 0, NULL, 42.3, 2, NULL, 1),
+(23, 1352, 0, 1, '2024-10-05', 0, '19:32:00.000000', 0, 74.7, 74.7, 2, NULL, 1),
+(24, 1402, 0, 1, '2024-10-05', 0, '19:39:00.000000', 0, 1000, 1000, 2, NULL, 1),
+(25, 1452, 0, 1, '2024-10-05', 0, '19:43:00.000000', 0, 1000, 74.7, 2, NULL, 1),
+(26, 1453, 0, 1, '2024-10-05', 0, '19:44:00.000000', 0, 1000, 78.7, 2, NULL, 1),
+(27, 1502, 0, 1, '2024-10-05', 0, '19:45:00.000000', 0, 2000, 78.7, 2, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2945,7 +3118,14 @@ INSERT INTO `revision_info` (`id`, `revision_date`) VALUES
 (1254, '2024-09-23 19:49:52.430000'),
 (1255, '2024-09-23 19:49:52.453000'),
 (1256, '2024-09-23 19:51:06.887000'),
-(1257, '2024-09-23 19:51:06.909000');
+(1257, '2024-09-23 19:51:06.909000'),
+(1302, '2024-09-29 11:16:44.955000'),
+(1303, '2024-09-29 11:25:00.718000'),
+(1352, '2024-10-05 19:12:16.874000'),
+(1402, '2024-10-05 19:19:13.455000'),
+(1452, '2024-10-05 19:23:40.977000'),
+(1453, '2024-10-05 19:24:14.466000'),
+(1502, '2024-10-05 19:25:25.088000');
 
 -- --------------------------------------------------------
 
@@ -2963,7 +3143,7 @@ CREATE TABLE IF NOT EXISTS `revision_info_seq` (
 --
 
 INSERT INTO `revision_info_seq` (`next_val`) VALUES
-(1351);
+(1601);
 
 -- --------------------------------------------------------
 
@@ -3466,7 +3646,7 @@ ALTER TABLE `pedido`
   ADD CONSTRAINT `FK1nibrtel55qwnf6rwabwsqkyi` FOREIGN KEY (`empleado_id`) REFERENCES `empleado` (`id`),
   ADD CONSTRAINT `FK30s8j2ktpay6of18lbyqn3632` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`),
   ADD CONSTRAINT `FK3ks2hug06ddfndlg1rqw1xmr9` FOREIGN KEY (`sucursal_id`) REFERENCES `sucursal` (`id`),
-  ADD CONSTRAINT `FKauqt5ljerhslue4scdu1qexb` FOREIGN KEY (`id`) REFERENCES `domicilio` (`id`),
+  ADD CONSTRAINT `FK_domicilio_id` FOREIGN KEY (`domicilio_id`) REFERENCES `domicilio` (`id`),
   ADD CONSTRAINT `FKpa5hywhn7so5bn1ctm1yhwuei` FOREIGN KEY (`factura_id`) REFERENCES `factura` (`id`);
 
 --

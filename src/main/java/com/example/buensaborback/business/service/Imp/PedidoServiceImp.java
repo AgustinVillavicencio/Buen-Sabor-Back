@@ -10,6 +10,8 @@ import com.example.buensaborback.domain.enums.Estado;
 import com.example.buensaborback.domain.enums.TipoEnvio;
 import com.example.buensaborback.repositories.*;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,6 +31,9 @@ import java.util.Set;
 
 @Service
 public class PedidoServiceImp extends BaseServiceImp<Pedido,Long> implements PedidoService {
+
+    private static final Logger logger = LoggerFactory.getLogger(PedidoServiceImp.class);
+
     @Autowired
     PedidoRepository pedidoRepository;
 
@@ -53,86 +58,128 @@ public class PedidoServiceImp extends BaseServiceImp<Pedido,Long> implements Ped
     @Override
     @Transactional
     public Pedido create(Pedido request) throws Exception {
+        logger.info("Inicio de creación de pedido");
+
+        // Validación del cliente
         Optional<Cliente> clienteOptional = clienteRepository.findById(request.getCliente().getId());
         if (clienteOptional.isEmpty()) {
+            logger.error("Cliente no encontrado con ID: {}", request.getCliente().getId());
             throw new RuntimeException("El cliente con el id " + request.getCliente().getId() + " no se ha encontrado");
         }
 
+        // Validación del tipo de envío y domicilio si es DELIVERY
         if (request.getTipoEnvio().equals(TipoEnvio.DELIVERY)) {
             if (request.getDomicilio() == null) {
+                logger.error("Domicilio es requerido para envío DELIVERY");
                 throw new RuntimeException("Debe proporcionar un domicilio para envío delivery");
             }
             Optional<Domicilio> domicilio = domicilioRepository.findById(request.getDomicilio().getId());
             if (domicilio.isEmpty()) {
+                logger.error("Domicilio no encontrado con ID: {}", request.getDomicilio().getId());
                 throw new RuntimeException("El domicilio con el id " + request.getDomicilio().getId() + " no se ha encontrado");
             }
             Cliente cliente = clienteOptional.get();
             if (!cliente.getDomicilios().contains(domicilio.get())) {
+                logger.error("El domicilio no coincide con el cliente. Cliente ID: {}, Domicilio ID: {}", cliente.getId(), domicilio.get().getId());
                 throw new RuntimeException("El domicilio con el id " + request.getDomicilio().getId() + " no coincide con el cliente " + cliente.getId());
             }
         }
 
-
-        Set<DetallePedido> detalles = request.getDetallePedidos(); // Guardar los detalles del body en un set
-        Set<DetallePedido> detallesPersistidos = new HashSet<>(); // Inicializar un set que contendrá los detalles que pasen las validaciones
-        TipoEnvio tipoEnvio = request.getTipoEnvio();
-
-        int tiempoEnvio = 0;
-        if (tipoEnvio.equals(TipoEnvio.DELIVERY)) {
-            tiempoEnvio = 10;
-        }
-
-        // Validar que se haya pasado una sucursal en el body
+        // Validación de la sucursal
         if (request.getSucursal() == null) {
+            logger.error("Sucursal no asignada al pedido");
             throw new RuntimeException("No se ha asignado una sucursal al pedido");
         }
-        Sucursal sucursal = sucursalRepository.getById(request.getSucursal().getId());
-        // Validar que la sucursal existe
-        if (sucursal == null) {
-            throw new RuntimeException("La sucursal con id " + request.getSucursal().getId() + " no se ha encontrado");
-        }
+        Sucursal sucursal = sucursalRepository.findById(request.getSucursal().getId())
+                .orElseThrow(() -> new RuntimeException("La sucursal con id " + request.getSucursal().getId() + " no se ha encontrado"));
+        logger.info("Sucursal encontrada: {}", sucursal.getId());
 
-        if (detalles != null && !detalles.isEmpty()) {
-            double costoTotal = 0;
-            LocalTime horaActual = LocalTime.now();
-            LocalTime horaEstimadaFinalizacion = horaActual;
-            //Iterar los detalles
-            for (DetallePedido detalle : detalles) {
-                Articulo articulo = detalle.getArticulo(); // Obtener el artículo presente en el detalle
-                if (articulo == null || articulo.getId() == null) {
-                    throw new RuntimeException("El artículo del detalle no puede ser nulo.");
-                }
-                // Validar que el articulo exista
-                articulo = articuloRepository.findById(detalle.getArticulo().getId())
-                        .orElseThrow(() -> new RuntimeException("El artículo con id " + detalle.getArticulo().getId() + " no se ha encontrado."));
-                detalle.setArticulo(articulo);
-                //DetallePedido savedDetalle = detallePedidoRepository.save(detalle); // Guardar los detalles en la bd
-
-                costoTotal += calcularTotalCosto(articulo, detalle.getCantidad()); // Calcular costo total por cada iteración de detalle
-                descontarStock(articulo, detalle.getCantidad()); // Descontar el stock por cada iteración de detalle
-                if (articulo instanceof ArticuloManufacturado)
-                    horaEstimadaFinalizacion = horaEstimadaFinalizacion.plusMinutes((long) ((ArticuloManufacturado) articulo).getTiempoEstimadoMinutos() * detalle.getCantidad());
-
-                detallesPersistidos.add(detalle);
-            }
-            request.setTotalCosto(costoTotal); // Asignarle el total costo al pedido
-            request.setDetallePedidos(detallesPersistidos); // Después de la iteración, asignarle todos los detalles al pedido
-            LocalTime finalizaA = horaEstimadaFinalizacion.plusMinutes(tiempoEnvio);// Sumarle el tiempo de envío
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm"); // Declara formato de hora
-            String horaFormateada = finalizaA.format(formatter); // Formatear hora
-            request.setHoraEstimadaFinalizacion(LocalTime.parse(horaFormateada)); // Asignar la hora estimada de finalización formateada al pedido
-        } else {
+        // Procesamiento de los detalles del pedido
+        Set<DetallePedido> detalles = request.getDetallePedidos();
+        if (detalles == null || detalles.isEmpty()) {
+            logger.error("El pedido debe contener al menos un detalle");
             throw new IllegalArgumentException("El pedido debe contener al menos un detalle");
         }
 
-        request.setSucursal(sucursal); // Asignar la sucursal al pedido
+        double costoTotal = 0.0;
+        double costoVenta = 0.0;
+        LocalTime horaActual = LocalTime.now();
+        LocalTime horaEstimadaFinalizacion = horaActual;
+        int tiempoEnvio = request.getTipoEnvio().equals(TipoEnvio.DELIVERY) ? 10 : 0;
 
-        request.setEstado(Estado.PENDIENTE); //Asignar el estado inicial
+        Set<DetallePedido> detallesPersistidos = new HashSet<>();
 
-        request.setFechaPedido(LocalDate.now()); //Asignar la fecha
+        for (DetallePedido detalle : detalles) {
+            Articulo articulo = detalle.getArticulo();
+            if (articulo == null || articulo.getId() == null) {
+                logger.error("Artículo en detallePedido es nulo o su ID es nulo");
+                throw new RuntimeException("El artículo del detalle no puede ser nulo.");
+            }
 
-        return pedidoRepository.save(request); // Guardar el nuevo pedido
+            // Validar existencia del artículo
+            articulo = articuloRepository.findById(articulo.getId())
+                    .orElseThrow(() -> new RuntimeException("El artículo con id " + detalle.getArticulo().getId() + " no se ha encontrado."));
+            logger.info("Artículo encontrado: {}", articulo.getId());
+
+            detalle.setArticulo(articulo);
+
+            // Calcular y asignar subTotal
+            double subTotal = calcularTotalCosto(articulo, detalle.getCantidad());
+            detalle.setSubTotal(subTotal);
+            logger.info("DetallePedido: Artículo ID: {}, Cantidad: {}, SubTotal: {}", articulo.getId(), detalle.getCantidad(), subTotal);
+
+            // Acumular el costo total
+            costoTotal += subTotal;
+
+            //Acumular costoVenta
+            costoVenta+= detalle.getArticulo().getPrecioVenta()*detalle.getCantidad();
+
+            // Descontar el stock
+            descontarStock(articulo, detalle.getCantidad());
+
+            // Calcular la hora estimada de finalización
+            if (articulo instanceof ArticuloManufacturado) {
+                int tiempoEstimado = ((ArticuloManufacturado) articulo).getTiempoEstimadoMinutos();
+                horaEstimadaFinalizacion = horaEstimadaFinalizacion.plusMinutes((long) tiempoEstimado * detalle.getCantidad());
+                logger.info("ArticuloManufacturado: ID: {}, TiempoEstimadoMinutos: {}", articulo.getId(), tiempoEstimado);
+            }
+
+            detallesPersistidos.add(detalle);
+        }
+
+        // Asignar los detalles persistidos al pedido
+        request.setDetallePedidos(detallesPersistidos);
+        logger.info("Detalles del pedido asignados");
+
+        // Asignar el total y totalCosto al pedido
+        request.setTotalCosto(costoTotal);
+        request.setTotal(costoVenta); // Si `total` incluye otros cálculos, ajusta aquí
+        logger.info("TotalCosto asignado: {}", costoTotal);
+        logger.info("Total asignado: {}", costoVenta);
+
+        // Calcular y asignar la hora estimada de finalización
+        LocalTime finalizaA = horaEstimadaFinalizacion.plusMinutes(tiempoEnvio);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String horaFormateada = finalizaA.format(formatter);
+        request.setHoraEstimadaFinalizacion(LocalTime.parse(horaFormateada));
+        logger.info("Hora estimada de finalización asignada: {}", horaFormateada);
+
+        // Asignar la sucursal al pedido
+        request.setSucursal(sucursal);
+        logger.info("Sucursal asignada al pedido: {}", sucursal.getId());
+
+        // Asignar estado y fecha
+        request.setEstado(Estado.PENDIENTE);
+        request.setFechaPedido(LocalDate.now());
+        logger.info("Estado y fecha asignados al pedido");
+
+        // Guardar el pedido en la base de datos
+        Pedido pedidoGuardado = pedidoRepository.save(request);
+        logger.info("Pedido guardado con ID: {}", pedidoGuardado.getId());
+
+        return pedidoGuardado;
     }
+
 
     @Transactional
     public void descontarStock(Articulo articulo, int cantidad) throws Exception{
