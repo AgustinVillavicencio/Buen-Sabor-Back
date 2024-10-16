@@ -23,12 +23,12 @@ public class MercadoPagoController {
     @PostMapping("/preference_mp")
     public PreferenceMp getPreferenciaIdMercadoPago(@RequestBody Pedido pedido) throws MPException {
         try {
-            MercadoPagoConfig.setAccessToken("TEST-650691690367918-061007-f316ba9ff0123908c8e3d360518f9896-174713307");
+            MercadoPagoConfig.setAccessToken("APP_USR-4213850592203671-101616-6d2202e569f1c93e660de1199589a7d3-159808951");
             PreferenceItemRequest itemRequest = PreferenceItemRequest.builder()
                     .id(String.valueOf(pedido.getId()))
                     .title("El Buen Sabor")
                     .description("Pedido realizado desde el carrito de compras")
-                    .pictureUrl("https://static.vecteezy.com/system/resources/previews/007/126/404/non_2x/food-delivery-icon-free-vector.jpg")
+                    .pictureUrl("https://static.vecteezy.com/system/resources/previews/007/126/404/non  _2x/food-delivery-icon-free-vector.jpg")
                     .quantity(1)
                     .currencyId("ARG")
                     .unitPrice(new BigDecimal(pedido.getTotal()))
