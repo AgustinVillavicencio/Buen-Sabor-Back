@@ -210,15 +210,21 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo, Lon
         return null;
     }
 
+    /*@Override
+    public Page<ArticuloInsumo> findBySucursal(Long sucursalId, Pageable pageable) {
+        return (Page<ArticuloInsumo>) articuloInsumoRepository.findBySucursal_IdAndBajaFalse(sucursalId);
+    }*/
+
     @Override
     public Page<ArticuloInsumo> findBySucursal(Long sucursalId, Pageable pageable) {
-        return null;
+        return articuloInsumoRepository.findBySucursal_Id(sucursalId, pageable);
     }
 
     @Override
     public List<ArticuloInsumo> findBySucursal(Long sucursalId) {
-        return List.of();
+        return articuloInsumoRepository.findBySucursal_IdAndBajaFalse(sucursalId);
     }
+
 
     public List<Long> findAllSubcategoryIds(Long categoriaId) {
         List<Long> subcategoryIds = new ArrayList<>();
@@ -240,4 +246,6 @@ public class ArticuloInsumoServiceImp extends BaseServiceImp<ArticuloInsumo, Lon
         return articuloInsumoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Insumo no encontrado: { id: " + id + " }"));
     }
+
+
 }

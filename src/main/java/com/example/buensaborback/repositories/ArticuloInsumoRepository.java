@@ -24,8 +24,8 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
     ArticuloInsumo findBySucursal_IdAndDenominacionContainingIgnoreCase(Long sucursalId, String denominacion);
 
     Page<ArticuloInsumo> findBySucursal_Id(Long sucursalId, Pageable pageable);
+    //Page<ArticuloInsumo> findBySucursal_IdAndBajaFalse(Long sucursalId);
     List<ArticuloInsumo> findBySucursal_IdAndBajaFalse(Long sucursalId);
-
 
     @Query("SELECT ai " +
             "FROM ArticuloInsumo ai " +
